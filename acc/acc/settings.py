@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'criteria_1',
     'criteria_2',
     'criteria_3',
+    'criteria_4',
 
 ]
 

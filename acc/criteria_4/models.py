@@ -83,7 +83,15 @@ class Criteria_4_1_1(models.Model):
         return f"{self.year} - {self.description[:50]}"
     
 class Criteria_4_2_1(models.Model):
-    year = models.IntegerField()
+    YEAR_CHOICES = [
+        (1, 'Year 1'),
+        (2, 'Year 2'),
+        (3, 'Year 3'),
+        (4, 'Year 4'),
+        (5, 'Year 5'),
+    ]
+
+    year = models.IntegerField(choices=YEAR_CHOICES)
     description = models.TextField(
         help_text="Describe the library's digital facilities, automation, and usage in a maximum of 500 words."
     )
@@ -106,7 +114,15 @@ class Criteria_4_2_1(models.Model):
 from django.db import models
 
 class Criteria_4_3_1(models.Model):
-    year = models.IntegerField()
+    YEAR_CHOICES = [
+        (1, 'Year 1'),
+        (2, 'Year 2'),
+        (3, 'Year 3'),
+        (4, 'Year 4'),
+        (5, 'Year 5'),
+    ]
+
+    year = models.IntegerField(choices=YEAR_CHOICES)
     description = models.TextField(
         help_text="Describe IT facilities, including Wi-Fi, updates (with dates and nature of updates), and internet bandwidth within a maximum of 500 words."
     )
@@ -127,7 +143,15 @@ class Criteria_4_3_1(models.Model):
         return f"{self.year} - {self.description[:50]}"
 
 class Criteria_4_3_2(models.Model):
-    year = models.IntegerField(help_text="Latest completed academic year")
+    YEAR_CHOICES = [
+        (1, 'Year 1'),
+        (2, 'Year 2'),
+        (3, 'Year 3'),
+        (4, 'Year 4'),
+        (5, 'Year 5'),
+    ]
+
+    year = models.IntegerField(choices=YEAR_CHOICES)
     number_of_students = models.IntegerField(help_text="Total number of students during the latest completed academic year")
     number_of_computers = models.IntegerField(help_text="Number of computers available for student usage during the latest completed academic year")
     supporting_document = models.FileField(

@@ -1,0 +1,298 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+<!-- Content wrapper start -->
+<div class="content-wrapper">
+    <!-- Row start -->
+    <div class="row">
+        <div class="col-12">
+            {% include 'messages.html' %}
+            <div class="card">
+                <div class="card-body d-flex justify-content-between align-items-center">
+                    <h3 class="card-title" style="font-size: 1.5rem;">Criteria 3.5.1</h3>
+                    <div>
+                        <a href="{% url 'criteria_3_5_1_form' %}" class="btn btn-info"><i class="bi bi-plus-square"></i> New</a>
+                        <form action="{% url 'upload_excel_3_5_1' %}" method="post" enctype="multipart/form-data" style="display: inline-block;">
+                            {% csrf_token %}
+                            <label for="excelFileInput" class="btn btn-success">
+                                <i class="bi bi-file-earmark-arrow-up"></i> Upload Excel
+                                <input type="file" id="excelFileInput" name="excel_file" accept=".xlsx" style="display: none;" onchange="this.form.submit()">
+                            </label>
+                        </form>
+                        <a href="{% url 'export_excel_3_5_1' %}" class="btn btn-danger"><i class="bi bi-file-earmark-arrow-down"></i> Export Excel</a>
+                    </div>
+                </div>
+            </div>
+            
+        </div>              
+        <div class="col-sm-12 col-12">
+            <!-- Card start -->
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title">2021 - 2022</div>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered custom-table">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th class="align-middle">Sl No</th>
+                                    <th class="align-middle col-1">Name of the MoU / linkage</th>
+                                    <th class="align-middle col-3">Name of the institution/industry with whom the MoU/linkage is made, with contact details
+                                    </th>
+                                    <th class="align-middle col-1">Year of signing MoU/linkage</th>
+                                    <th class="align-middle col-4">Purpose of the MoU/Linkage (Internship, on-the-job training, project work, student/faculty exchange and collaborative research)</th>
+                                    <th class="align-middle col-1">Duration of MoU/linkage</th>
+                                    <th class="align-middle col-2">List the actual activities under each MOU/Linkage and web-links year-wise</th>
+                                    <th class="align-middle col-3">Link to the relevant document</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% if 2021_records %}
+                                    {% for record in 2021_records %}
+                                    <tr>
+                                        <td>{{ forloop.counter }}</td>
+                                        <td>{{ record.mou_name }}</td>
+                                        <td>{{ record.institution_name }}</td>
+                                        <td>{{ record.signing_year }}</td>
+                                        <td>{{ record.pourpose }}</td>
+                                        <td>{{ record.duration }}</td>
+                                        <td>{{ record.activities }}</td>
+                                        <td>{{ record.document_link }}</td>
+                                    </tr>
+                                    {% endfor %}
+                                {% else %}
+                                <tr>
+                                    <td colspan="8" class="text-center align-middle">
+                                        <div class="alert alert-danger mb-0" role="alert">
+                                            <h6 class="font-weight-bold mb-0">No Data Available</h6>
+                                        </div>
+                                    </td>
+                                </tr>
+                                {% endif %}
+                            </tbody>                            
+                        </table>
+                    </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Card end -->
+        </div>
+        <div class="col-sm-12 col-12">
+
+            <!-- Card start -->
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title">2022 - 2023</div>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered custom-table">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th class="align-middle">Sl No</th>
+                                    <th class="align-middle col-1">Name of the MoU / linkage</th>
+                                    <th class="align-middle col-3">Name of the institution/industry with whom the MoU/linkage is made, with contact details
+                                    </th>
+                                    <th class="align-middle col-1">Year of signing MoU/linkage</th>
+                                    <th class="align-middle col-4">Purpose of the MoU/Linkage (Internship, on-the-job training, project work, student/faculty exchange and collaborative research)</th>
+                                    <th class="align-middle col-1">Duration of MoU/linkage</th>
+                                    <th class="align-middle col-2">List the actual activities under each MOU/Linkage and web-links year-wise</th>
+                                    <th class="align-middle col-3">Link to the relevant document</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% if 2022_records %}
+                                    {% for record in 2022_records %}
+                                    <tr>
+                                        <td>{{ forloop.counter }}</td>
+                                        <td>{{ record.mou_name }}</td>
+                                        <td>{{ record.institution_name }}</td>
+                                        <td>{{ record.signing_year }}</td>
+                                        <td>{{ record.pourpose }}</td>
+                                        <td>{{ record.duration }}</td>
+                                        <td>{{ record.activities }}</td>
+                                        <td>{{ record.document_link }}</td>
+                                    </tr>
+                                    {% endfor %}
+                                {% else %}
+                                <tr>
+                                    <td colspan="8" class="text-center">
+                                        <div class="alert alert-danger mb-0" role="alert">
+                                            <h6 class="font-weight-bold mb-0">No Data Available</h6>
+                                        </div>
+                                    </td>
+                                </tr>
+                                {% endif %}
+                            </tbody>    
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <!-- Card end -->
+        </div>
+        <div class="col-sm-12 col-12">
+
+            <!-- Card start -->
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title">2023 - 2024</div>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered custom-table">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th class="align-middle">Sl No</th>
+                                    <th class="align-middle col-1">Name of the MoU / linkage</th>
+                                    <th class="align-middle col-3">Name of the institution/industry with whom the MoU/linkage is made, with contact details
+                                    </th>
+                                    <th class="align-middle col-1">Year of signing MoU/linkage</th>
+                                    <th class="align-middle col-4">Purpose of the MoU/Linkage (Internship, on-the-job training, project work, student/faculty exchange and collaborative research)</th>
+                                    <th class="align-middle col-1">Duration of MoU/linkage</th>
+                                    <th class="align-middle col-2">List the actual activities under each MOU/Linkage and web-links year-wise</th>
+                                    <th class="align-middle col-3">Link to the relevant document</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% if 2023_records %}
+                                    {% for record in 2023_records %}
+                                    <tr>
+                                        <td>{{ forloop.counter }}</td>
+                                        <td>{{ record.mou_name }}</td>
+                                        <td>{{ record.institution_name }}</td>
+                                        <td>{{ record.signing_year }}</td>
+                                        <td>{{ record.pourpose }}</td>
+                                        <td>{{ record.duration }}</td>
+                                        <td>{{ record.activities }}</td>
+                                        <td>{{ record.document_link }}</td>
+                                    </tr>
+                                    {% endfor %}
+                                {% else %}
+                                <tr>
+                                    <td colspan="8" class="text-center">
+                                        <div class="alert alert-danger mb-0" role="alert">
+                                            <h6 class="font-weight-bold mb-0">No Data Available</h6>
+                                        </div>
+                                    </td>
+                                </tr>
+                                {% endif %}
+                            </tbody>    
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <!-- Card end -->
+        </div>
+        <div class="col-sm-12 col-12">
+
+            <!-- Card start -->
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title">2024 - 2025</div>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered custom-table">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th class="align-middle">Sl No</th>
+                                    <th class="align-middle col-1">Name of the MoU / linkage</th>
+                                    <th class="align-middle col-3">Name of the institution/industry with whom the MoU/linkage is made, with contact details
+                                    </th>
+                                    <th class="align-middle col-1">Year of signing MoU/linkage</th>
+                                    <th class="align-middle col-4">Purpose of the MoU/Linkage (Internship, on-the-job training, project work, student/faculty exchange and collaborative research)</th>
+                                    <th class="align-middle col-1">Duration of MoU/linkage</th>
+                                    <th class="align-middle col-2">List the actual activities under each MOU/Linkage and web-links year-wise</th>
+                                    <th class="align-middle col-3">Link to the relevant document</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% if 2024_records %}
+                                    {% for record in 2024_records %}
+                                    <tr>
+                                        <td>{{ forloop.counter }}</td>
+                                        <td>{{ record.mou_name }}</td>
+                                        <td>{{ record.institution_name }}</td>
+                                        <td>{{ record.signing_year }}</td>
+                                        <td>{{ record.pourpose }}</td>
+                                        <td>{{ record.duration }}</td>
+                                        <td>{{ record.activities }}</td>
+                                        <td>{{ record.document_link }}</td>
+                                    </tr>
+                                    {% endfor %}
+                                {% else %}
+                                <tr>
+                                    <td colspan="8" class="text-center">
+                                        <div class="alert alert-danger mb-0" role="alert">
+                                            <h6 class="font-weight-bold mb-0">No Data Available</h6>
+                                        </div>
+                                    </td>
+                                </tr>
+                                {% endif %}
+                            </tbody>    
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <!-- Card end -->
+        </div>
+        <div class="col-sm-12 col-12">
+
+            <!-- Card start -->
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title">2025 - 2026</div>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered custom-table">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th class="align-middle">Sl No</th>
+                                    <th class="align-middle col-1">Name of the MoU / linkage</th>
+                                    <th class="align-middle col-3">Name of the institution/industry with whom the MoU/linkage is made, with contact details
+                                    </th>
+                                    <th class="align-middle col-1">Year of signing MoU/linkage</th>
+                                    <th class="align-middle col-4">Purpose of the MoU/Linkage (Internship, on-the-job training, project work, student/faculty exchange and collaborative research)</th>
+                                    <th class="align-middle col-1">Duration of MoU/linkage</th>
+                                    <th class="align-middle col-2">List the actual activities under each MOU/Linkage and web-links year-wise</th>
+                                    <th class="align-middle col-3">Link to the relevant document</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% if 2025_records %}
+                                    {% for record in 2025_records %}
+                                    <tr>
+                                        <td>{{ forloop.counter }}</td>
+                                        <td>{{ record.mou_name }}</td>
+                                        <td>{{ record.institution_name }}</td>
+                                        <td>{{ record.signing_year }}</td>
+                                        <td>{{ record.pourpose }}</td>
+                                        <td>{{ record.duration }}</td>
+                                        <td>{{ record.activities }}</td>
+                                        <td>{{ record.document_link }}</td>
+                                    </tr>
+                                    {% endfor %}
+                                {% else %}
+                                <tr>
+                                    <td colspan="8" class="text-center">
+                                        <div class="alert alert-danger mb-0" role="alert">
+                                            <h6 class="font-weight-bold mb-0">No Data Available</h6>
+                                        </div>
+                                    </td>
+                                </tr>
+                                {% endif %}
+                            </tbody>    
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <!-- Card end -->
+        </div>
+    </div>
+</div>
+
+{% endblock %}

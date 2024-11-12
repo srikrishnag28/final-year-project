@@ -1,0 +1,104 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<!-- Content wrapper start -->
+<div class="content-wrapper">
+	<!-- Row start -->
+	<div class="row">
+		<div class="col-sm-12 col-12">
+			{% include 'messages.html' %}
+            <!-- Card start -->
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title">Criteria 3.3.1</div>
+                </div>
+
+				<div class="card-body">
+					<!-- Row start -->
+					<!-- your_template.html -->
+					<form method="post" action="{% url 'criteria_3_3_1_form' %}">
+						{% csrf_token %}
+						<div class="row">
+							<div class="col-xxl-3 col-xl-3 col-lg-4 col-md-4 col-sm-4 col-12">
+								<div class="mb-3">
+									<label class="form-label">Year</label>
+									{{ form.year }}
+								</div>
+							</div>
+							<div class="col-12">
+								<div class="form-section-title">Course Details</div>
+							</div>
+							<div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+								<div class="mb-3">
+									<label class="form-label">Title of Paper</label>
+									{{ form.title_of_paper }}
+								</div>
+							</div>
+							<div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+								<div class="mb-3">
+									<label class="form-label">Name of the author/s</label>
+									{{ form.authors }}
+								</div>
+							</div>
+							<div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+								<div class="mb-3">
+									<label class="form-label">Department of the teacher</label>
+									{{ form.department }}
+								</div>
+							</div>
+							<div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+								<div class="mb-3">
+									<label class="form-label">Name of journal</label>
+									{{ form.journal_name }}
+								</div>
+							</div>
+							<div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+								<div class="mb-3">
+									<label class="form-label">Calendar Year of publication</label>
+									{{ form.year_of_publication }}
+								</div>
+							</div>
+							<div class="col-xxl-4 col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12">
+								<div class="mb-3">
+									<label class="form-label">ISSN Number</label>
+									{{ form.issn_number }}
+								</div>
+							</div>
+							<div class="col-xxl-4 col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12">
+								<div class="mb-3">
+									<label class="form-label">Link to website of the Journal</label>
+									{{ form.journal_website_link }}
+								</div>
+							</div>
+							<div class="col-xxl-4 col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12">
+								<div class="mb-3">
+									<label class="form-label">Link to article/paper/abstract of the article</label>
+									{{ form.article_link }}
+								</div>
+							</div>
+							<div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+								<div class="mb-3">
+									<label class="form-label">Is it listed in UGC Care list: </label>
+									{{ form.is_ugc_care_listed }}
+								</div>
+							</div>
+						</div>
+						<!-- Form actions footer start -->
+						<div class="form-actions-footer">
+							<a href="{% url 'criteria_3_3_1' %}" class="btn btn-light">Cancel</a>
+							<button type="submit" class="btn btn-success">Submit</button>
+						</div>
+					</form>
+					<!-- Form actions footer end -->
+				</div>
+			</div>
+			<!-- Card end -->
+		</div>
+	</div>
+	<!-- Row end -->
+</div>
+<!-- Content wrapper end -->
+
+{% endblock %}

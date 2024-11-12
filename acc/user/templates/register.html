@@ -1,0 +1,157 @@
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<!-- Required meta tags -->
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+		<!-- Meta -->
+		<meta name="description" content="Best Bootstrap Admin Dashboards">
+		<meta name="author" content="Bootstrap Gallery" />
+		<link rel="canonical" href="https://www.bootstrap.gallery/">
+		<meta property="og:url" content="https://www.bootstrap.gallery">
+		<meta property="og:title" content="Admin Templates - Dashboard Templates | Bootstrap Gallery">
+		<meta property="og:description" content="Marketplace for Bootstrap Admin Dashboards">
+		<meta property="og:type" content="Website">
+		<meta property="og:site_name" content="Bootstrap Gallery">
+		<link rel="shortcut icon" href="{% static 'assets/images/favicon.svg' %}">
+
+		<!-- Title -->
+		<title>Bootstrap Admin Dashboards</title>
+
+
+		<!-- *************
+			************ Common Css Files *************
+		************ -->
+
+		<!-- Animated css -->
+		<link rel="stylesheet" href="{% static 'css/animate.css' %}">
+
+		<!-- Bootstrap font icons css -->
+		<link rel="stylesheet" href="{% static 'fonts/bootstrap/bootstrap-icons.css' %}">
+
+		<!-- Main css -->
+		<link rel="stylesheet" href="{% static 'css/main.css' %}">
+
+    </head>
+
+	<body class="login-container">
+
+		<!-- Loading wrapper start -->
+		<!-- <div id="loading-wrapper">
+			<div class="spinner">
+                <div class="line1"></div>
+				<div class="line2"></div>
+				<div class="line3"></div>
+				<div class="line4"></div>
+				<div class="line5"></div>
+				<div class="line6"></div>
+            </div>
+		</div> -->
+		<!-- Loading wrapper end -->
+		<!-- Login box start -->
+		<form action="{% url 'register' %}" method="post">
+
+			{% csrf_token %}
+			<div class="login-box">
+				<div class="login-form">
+					<a href="index.html" class="login-logo">
+						<img src="{% static 'images/logo.png' %}" alt="Vico Admin" />
+					</a>
+					<div class="login-welcome">
+						Register
+					</div>
+					{% include 'messages.html' %}
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="mb-3">
+                                <label class="form-label">First Name</label>
+        <!--						<input type="email" class="form-control">-->
+                                {{ form.first_name }}
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="mb-3">
+                                <label class="form-label">Last Name</label>
+                                {{ form.last_name }}
+                            </div>
+                        </div>
+                        <div class="col-9">
+                            <div class="mb-3">
+                                <label class="form-label">Email</label>
+                                {{ form.email }}
+                            </div>
+                        </div>
+						<div class="col-3">
+                            <div class="mb-3">
+                                <label class="form-label">User Type</label>
+                                {{ form.user_type }}
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="mb-3">
+                                <label class="form-label">Phone</label>
+                                {{ form.phone_number }}
+                            </div>
+                        </div>
+                         <div class="col-6">
+                            <div class="mb-3">
+                                <label class="form-label">Username</label>
+                                {{ form.username }}
+                            </div>
+                        </div>
+						<div class="col-6">
+                            <div class="mb-3">
+                                <label class="form-label">Create password</label>
+                                {{ form.password }}
+                            </div>
+                        </div>
+						<div class="col-6">
+                            <div class="mb-3">
+                                <label class="form-label">Confirm password</label>
+                                {{ form.confirm_password }}
+                            </div>
+                        </div>
+                    </div>
+
+					<div class="login-form-actions">
+						<button type="submit" class="btn"> <span class="icon"> <i class="bi bi-arrow-right-circle"></i> </span>
+							Signup</button>
+					</div>
+<!--					<div class="login-form-actions">-->
+<!--						<button type="submit" class="btn"> <img src="{% static 'images/google.svg' %}" class="login-icon"-->
+<!--								alt="Signup using Gmail">-->
+<!--							Signup using Gmail</button>-->
+<!--					</div>-->
+					<div class="login-form-footer">
+						<div class="additional-link">
+							Already have an account? <a href="{% url 'login' %}"> Login</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</form>
+		<!-- Login box end -->
+
+		<!-- *************
+			************ Required JavaScript Files *************
+		************* -->
+		<!-- Required jQuery first, then Bootstrap Bundle JS -->
+		<script src="{% static 'js/jquery.min.js' %}"></script>
+		<script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+		<script src="{% static 'js/modernizr.js' %}"></script>
+		<script src="{% static 'js/moment.js' %}"></script>
+
+		<!-- *************
+			************ Vendor Js Files *************
+		************* -->
+
+		<!-- Main Js Required -->
+		<script src="{% static 'assets/js/main.js' %}"></script>
+
+	</body>
+
+</html>

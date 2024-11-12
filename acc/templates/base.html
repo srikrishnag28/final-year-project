@@ -1,0 +1,459 @@
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<!-- Required meta tags -->
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+		<!-- Meta -->
+		<meta name="description" content="Best Bootstrap Admin Dashboards">
+		<meta name="author" content="Bootstrap Gallery" />
+		<link rel="canonical" href="https://www.bootstrap.gallery/">
+		<meta property="og:url" content="https://www.bootstrap.gallery">
+		<meta property="og:title" content="Admin Templates - Dashboard Templates | Bootstrap Gallery">
+		<meta property="og:description" content="Marketplace for Bootstrap Admin Dashboards">
+		<meta property="og:type" content="Website">
+		<meta property="og:site_name" content="Bootstrap Gallery">
+		<link rel="shortcut icon" href="{% static 'images/favicon.png' %}">
+
+		<!-- Title -->
+		<title>Bootstrap Admin Dashboards</title>
+
+
+		<!-- *************
+			************ Common Css Files *************
+		************ -->
+
+		<!-- Animated css -->
+			<link rel="stylesheet" href="{% static 'css/animate.css' %}">
+
+		<!-- Bootstrap font icons css -->
+		<!-- <link rel="stylesheet" href="assets/fonts/bootstrap/bootstrap-icons.css"> -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+		<!-- Main css -->
+		<link rel="stylesheet" href="{% static 'css/main.css' %}">
+
+		<!-- Scrollbar CSS -->
+		<link rel="stylesheet" href="{% static 'vendor/overlay-scroll/OverlayScrollbars.min.css' %}">
+
+		<!-- Date Range CSS -->
+		<link rel="stylesheet" href="{% static 'vendor/daterange/daterange.css' %}">
+
+	</head>
+
+	<body>
+
+		<!-- Loading wrapper start -->
+		<div id="loading-wrapper">
+			<div class="spinner">
+				<div class="line1"></div>
+				<div class="line2"></div>
+				<div class="line3"></div>
+				<div class="line4"></div>
+				<div class="line5"></div>
+				<div class="line6"></div>
+			</div>
+		</div>
+		<!-- Loading wrapper end -->
+
+		<!-- Page wrapper start -->
+		<div class="page-wrapper">
+
+			<!-- Sidebar wrapper start -->
+			<nav class="sidebar-wrapper">
+
+				<!-- Sidebar brand starts -->
+				<div class="sidebar-brand">
+					<a href="index.html" class="logo">
+						<img src="{% static 'images/logo.png' %}" alt="Admin Dashboards" />
+					</a>
+				</div>
+				<!-- Sidebar brand starts -->
+
+				<!-- Sidebar menu starts -->
+				<div class="sidebar-menu">
+					<div class="sidebarMenuScroll">
+						<ul>
+							{% comment %} <li class="sidebar-dropdown active">
+								<a href="#">
+									<i class="bi bi-house"></i>
+									<span class="menu-text">Dashboards</span>
+								</a>
+								<div class="sidebar-submenu">
+									<ul>
+										<li>
+											<a href="index.html" class="current-page">Analytics</a>
+										</li>
+										<li>
+											<a href="reports.html">Reports</a>
+										</li>
+									</ul>
+								</div>
+							</li> {% endcomment %}
+                            <li class="sidebar-dropdown">
+								<a href="#">
+									<i class="bi bi-1-square"></i>
+									<span class="menu-text">Criteria 1</span>
+								</a>
+								<div class="sidebar-submenu">
+									<ul>
+										<li class="sub-sidebar-dropdown">
+											<a href="#">
+												<span class="menu-text">Sub Criteria 1.1</span>
+											</a>
+											<div class="sub-sidebar-submenu">
+												<ul>
+													<li>
+														<a href="">Sub Criteria 1.1.1</a>
+													</li>
+													<li>
+														<a href="">Sub Criteria 1.1.2</a>
+													</li>
+												</ul>
+											</div>
+										</li>
+                                        <li class="sub-sidebar-dropdown">
+											<a href="#">
+												<span class="menu-text">Sub Criteria 1.2</span>
+											</a>
+											<div class="sub-sidebar-submenu">
+												<ul>
+													<li>
+														<a href="">Sub Criteria 1.2.1</a>
+													</li>
+													<li>
+														<a href="{% url 'criteria_1_2_2' %}">Sub Criteria 1.2.2</a>
+													</li>
+												</ul>
+											</div>
+										</li>
+										<li class="sub-sidebar-dropdown">
+											<a href="#">
+												<span class="menu-text">Sub Criteria 1.3</span>
+											</a>
+											<div class="sub-sidebar-submenu">
+												<ul>
+													<li>
+														<a href="">Sub Criteria 1.3.1</a>
+													</li>
+													<li>
+														<a href="">Sub Criteria 1.3.2</a>
+													</li>
+												</ul>
+											</div>
+										</li>
+									</ul>
+								</div>
+							</li>
+                            <li class="sidebar-dropdown">
+								<a href="#">
+									<i class="bi bi-2-square"></i>
+									<span class="menu-text">Criteria 2</span>
+								</a>
+								<div class="sidebar-submenu">
+									<ul>
+										<li>
+											<a href="">Sub Criteria 2.1</a>
+										</li>
+                                        <li>
+											<a href="">Sub Criteria 2.2</a>
+										</li>
+									</ul>
+								</div>
+							</li>
+                            <li class="sidebar-dropdown">
+								<a href="#">
+									<i class="bi bi-3-square"></i>
+									<span class="menu-text">Criteria 3</span>
+								</a>
+								<div class="sidebar-submenu">
+									<ul>
+										<li class="sub-sidebar-dropdown">
+											<a href="#">
+												<span class="menu-text">Sub Criteria 3.1</span>
+											</a>
+											<div class="sub-sidebar-submenu">
+												<ul>
+													<li>
+														<a href="{% url 'criteria_3_1_1' %}">Sub Criteria 3.1.1</a>
+													</li>
+													<li>
+														<a href="">Sub Criteria 3.1.2</a>
+													</li>
+												</ul>
+											</div>
+										</li>
+                                        <li class="sub-sidebar-dropdown">
+											<a href="#">
+												<span class="menu-text">Sub Criteria 3.2</span>
+											</a>
+											<div class="sub-sidebar-submenu">
+												<ul>
+													<li>
+														<a href="">Sub Criteria 3.2.1</a>
+													</li>
+													<li>
+														<a href="{% url 'criteria_3_2_2' %}">Sub Criteria 3.2.2</a>
+													</li>
+												</ul>
+											</div>
+										</li>
+										<li class="sub-sidebar-dropdown">
+											<a href="#">
+												<span class="menu-text">Sub Criteria 3.3</span>
+											</a>
+											<div class="sub-sidebar-submenu">
+												<ul>
+													<li>
+														<a href="{% url 'criteria_3_3_1' %}">Sub Criteria 3.3.1</a>
+													</li>
+													<li>
+														<a href="">Sub Criteria 3.3.2</a>
+													</li>
+												</ul>
+											</div>
+										</li>
+										<li class="sub-sidebar-dropdown">
+											<a href="#">
+												<span class="menu-text">Sub Criteria 3.4</span>
+											</a>
+											<div class="sub-sidebar-submenu">
+												<ul>
+													<li>
+														<a href="">Sub Criteria 3.4.1</a>
+													</li>
+													<li>
+														<a href="">Sub Criteria 3.4.2</a>
+													</li>
+												</ul>
+											</div>
+										</li>
+										<li class="sub-sidebar-dropdown">
+											<a href="#">
+												<span class="menu-text">Sub Criteria 3.5</span>
+											</a>
+											<div class="sub-sidebar-submenu">
+												<ul>
+													<li>
+														<a href="{% url 'criteria_3_5_1' %}">Sub Criteria 3.5.1</a>
+													</li>
+													<li>
+														<a href="">Sub Criteria 3.5.2</a>
+													</li>
+												</ul>
+											</div>
+										</li>
+									</ul>
+								</div>
+							</li>
+                            <li class="sidebar-dropdown">
+								<a href="#" class="disable">
+									<i class="bi bi-4-square"></i>
+									<span class="menu-text">Criteria 4</span>
+								</a>
+								<div class="sidebar-submenu">
+									<ul>
+										<li>
+											<a href="">Sub Criteria 4.1</a>
+										</li>
+                                        <li>
+											<a href="">Sub Criteria 4.2</a>
+										</li>
+									</ul>
+								</div>
+							</li>
+                            <li class="sidebar-dropdown">
+								<a href="#">
+									<i class="bi bi-5-square"></i>
+									<span class="menu-text">Criteria 5</span>
+								</a>
+								<div class="sidebar-submenu">
+									<ul>
+										<li>
+											<a href="">Sub Criteria 5.1</a>
+										</li>
+                                        <li>
+											<a href="">Sub Criteria 5.2</a>
+										</li>
+									</ul>
+								</div>
+							</li>
+                            <li class="sidebar-dropdown">
+								<a href="#">
+									<i class="bi bi-6-square"></i>
+									<span class="menu-text">Criteria 6</span>
+								</a>
+								<div class="sidebar-submenu">
+									<ul>
+										<li>
+											<a href="">Sub Criteria 6.1</a>
+										</li>
+                                        <li>
+											<a href="">Sub Criteria 6.2</a>
+										</li>
+									</ul>
+								</div>
+							</li>
+                            <li class="sidebar-dropdown">
+								<a href="#">
+									<i class="bi bi-7-square"></i>
+									<span class="menu-text">Criteria 7</span>
+								</a>
+								<div class="sidebar-submenu">
+									<ul>
+										<li>
+											<a href="">Sub Criteria 7.1</a>
+										</li>
+                                        <li>
+											<a href="">Sub Criteria 7.2</a>
+										</li>
+									</ul>
+								</div>
+							</li>
+							<li>
+						</ul>
+					</div>
+				</div>
+				<!-- Sidebar menu ends -->
+
+			</nav>
+			<!-- Sidebar wrapper end -->
+
+			<!-- *************
+				************ Main container start *************
+			************* -->
+			<div class="main-container">
+
+				<!-- Page header starts -->
+				<div class="page-header">
+
+					<div class="toggle-sidebar" id="toggle-sidebar"><i class="bi bi-list"></i></div>
+
+					<!-- Breadcrumb start -->
+					{% comment %} <ol class="breadcrumb d-md-flex d-none">
+						<li class="breadcrumb-item">
+							<i class="bi bi-house"></i>
+							<a href="index.html">Home</a>
+						</li>
+						<li class="breadcrumb-item breadcrumb-active" aria-current="page">Sales</li>
+					</ol> {% endcomment %}
+					<!-- Breadcrumb end -->
+					<div class="text-center">
+						<h3>Accreditation Software</h3>
+					</div>
+					
+					<!-- Header actions ccontainer start -->
+					<div class="header-actions-container">
+
+						<!-- Search container start -->
+						{% comment %} <div class="search-container">
+
+							<!-- Search input group start -->
+							<div class="input-group">
+								<input type="text" class="form-control" placeholder="Search anything">
+								<button class="btn" type="button">
+									<i class="bi bi-search"></i>
+								</button>
+							</div>
+							<!-- Search input group end -->
+
+						</div> {% endcomment %}
+						<!-- Search container end -->
+
+						<!-- Leads start -->
+						{% comment %} <a href="orders.html" class="leads d-none d-xl-flex">
+							<div class="lead-details">You have <span class="count"> 21 </span> new leads </div>
+							<span class="lead-icon"><i
+									class="bi bi-bell-fill animate__animated animate__swing animate__infinite infinite"></i><b
+									class="dot animate__animated animate__heartBeat animate__infinite"></b></span>
+						</a> {% endcomment %}
+						<!-- Leads end -->
+
+						<!-- Header actions start -->
+						<ul class="header-actions">
+							<li class="dropdown">
+								<a href="#" id="userSettings" class="user-settings" data-toggle="dropdown" aria-haspopup="true">
+									<span class="user-name d-none d-md-block">{{ request.user.first_name }} {{ request.user.last_name }}</span>
+									<span class="avatar">
+										<img src="{% static 'images/default.jpeg' %}" alt="Admin Templates">
+									</span>
+								</a>
+								<div class="dropdown-menu dropdown-menu-end" aria-labelledby="userSettings">
+									<div class="header-profile-actions">
+										<a href="{% url 'profile' request.user.username %}">Profile</a>
+										<a href="{% url 'logout' %}">Logout</a>
+									</div>
+								</div>
+							</li>
+						</ul>
+						<!-- Header actions end -->
+
+					</div>
+					<!-- Header actions ccontainer end -->
+
+				</div>
+				<!-- Page header ends -->
+
+				<!-- Content wrapper scroll start -->
+				<div class="content-wrapper-scroll">
+					{% include 'messages.html' %}
+
+					{% block content %}
+
+					{% endblock %}
+
+
+					<!-- App Footer start -->
+<!--					<div class="app-footer">-->
+<!--						<span>© Arise admin 2023</span>-->
+<!--					</div>-->
+					<!-- App footer end -->
+
+				</div>
+				<!-- Content wrapper scroll end -->
+
+			</div>
+			<!-- *************
+				************ Main container end *************
+			************* -->
+
+		</div>
+		<!-- Page wrapper end -->
+
+		<!-- *************
+			************ Required JavaScript Files *************
+		************* -->
+		<!-- Required jQuery first, then Bootstrap Bundle JS -->
+		<script src="{% static 'js/jquery.min.js' %}"></script>
+		<script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+		<script src="{% static 'js/modernizr.js' %}"></script>
+		<script src="{% static 'js/moment.js' %}"></script>
+
+		<!-- *************
+			************ Vendor Js Files *************
+		************* -->
+
+		<!-- Overlay Scroll JS -->
+		<script src="{% static 'vendor/overlay-scroll/jquery.overlayScrollbars.min.js' %}"></script>
+		<script src="{% static 'vendor/overlay-scroll/custom-scrollbar.js' %}"></script>
+
+		<!-- Apex Charts -->
+		<script src="{% static 'vendor/apex/apexcharts.min.js' %}"></script>
+		<script src="{% static 'vendor/apex/custom/sales/salesGraph.js' %}"></script>
+		<script src="{% static 'vendor/apex/custom/sales/revenueGraph.js' %}"></script>
+		<script src="{% static 'vendor/apex/custom/sales/taskGraph.js' %}"></script>
+
+		<!-- Main Js Required -->
+		<script src="{% static 'js/main.js' %}"></script>
+				
+		<!-- Date Range JS -->
+		<script src="{% static 'vendor/daterange/daterange.js' %}"></script>
+		<script src="{% static 'vendor/daterange/custom-daterange.js' %}"></script>
+
+	</body>
+
+</html>

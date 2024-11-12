@@ -1,0 +1,285 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+<!-- Content wrapper start -->
+<div class="content-wrapper">
+    <!-- Row start -->
+    <div class="row">
+        <div class="col-12">
+            {% include 'messages.html' %}
+            <div class="card">
+                <div class="card-body d-flex justify-content-between align-items-center">
+                    <h3 class="card-title" style="font-size: 1.5rem;">Criteria 1.2.2</h3>
+                    <div>
+                        <a href="{% url 'criteria_1_2_2_form' %}" class="btn btn-info"><i class="bi bi-plus-square"></i> New</a>
+                        <form action="{% url 'upload_excel_1_2_2' %}" method="post" enctype="multipart/form-data" style="display: inline-block;">
+                            {% csrf_token %}
+                            <label for="excelFileInput" class="btn btn-success">
+                                <i class="bi bi-file-earmark-arrow-up"></i> Upload Excel
+                                <input type="file" id="excelFileInput" name="excel_file" accept=".xlsx" style="display: none;" onchange="this.form.submit()">
+                            </label>
+                        </form>
+                        <a href="{% url 'export_excel_1_2_2' %}" class="btn btn-danger"><i class="bi bi-file-earmark-arrow-down"></i> Export Excel</a>
+                    </div>
+                </div>
+            </div>
+            
+        </div>              
+        <div class="col-sm-12 col-12">
+            <!-- Card start -->
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title">June 2021 - May 2022</div>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered custom-table">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th class="align-middle col-3">Name of Certificate/ Value added course offered and online courses of MOOCs, SWAYAM, NPTEL etc. where the students of the institution have enrolled and successfully completed</th>
+                                    <th class="align-middle">Course Code (if any)</th>
+                                    <th class="align-middle">Year of offering/study</th>
+                                    <th class="align-middle col-2">Period (from date - to date)</th>
+                                    <th class="align-middle">Duration of course</th>
+                                    <th class="align-middle">Number of students enrolled in the year</th>
+                                    <th class="align-middle ">Number of Students completing the course in the year</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% if 2021_records %}
+                                    {% for record in 2021_records %}
+                                        <tr>
+                                            <td>{{ record.course_name }}</td>
+                                            <td>{{ record.course_code }}</td>
+                                            <td>{{ record.year_of_study }}</td>
+                                            <td>{{ record.period_from }} - {{ record.period_to }}</td>
+                                            <td>{{ record.duration }}</td>
+                                            <td>{{ record.students_enrolled }}</td>
+                                            <td>{{ record.students_completed }}</td>
+                                        </tr>
+                                    {% endfor %}
+                                {% else %}
+                                <tr>
+                                    <td colspan="7" class="text-center align-middle">
+                                        <div class="alert alert-danger mb-0" role="alert">
+                                            <h6 class="font-weight-bold mb-0">No Data Available</h6>
+                                        </div>
+                                    </td>
+                                </tr>
+                                {% endif %}
+                            </tbody>                            
+                        </table>
+                    </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Card end -->
+        </div>
+        <div class="col-sm-12 col-12">
+
+            <!-- Card start -->
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title">June 2022 - May 2023</div>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered custom-table">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th class="align-middle col-3">Name of Certificate/ Value added course offered and online courses of MOOCs, SWAYAM, NPTEL etc. where the students of the institution have enrolled and successfully completed</th>
+                                    <th class="align-middle">Course Code (if any)</th>
+                                    <th class="align-middle">Year of offering/study</th>
+                                    <th class="align-middle col-2">Period (from date - to date)</th>
+                                    <th class="align-middle">Duration of course</th>
+                                    <th class="align-middle">Number of students enrolled in the year</th>
+                                    <th class="align-middle ">Number of Students completing the course in the year</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% if 2022_records %}
+                                    {% for record in 2022_records %}
+                                            <tr>
+                                                <td>{{ record.course_name }}</td>
+                                                <td>{{ record.course_code }}</td>
+                                                <td>{{ record.year_of_study }}</td>
+                                                <td>{{ record.period_from }} - {{ record.period_to }}</td>
+                                                <td>{{ record.duration }}</td>
+                                                <td>{{ record.students_enrolled }}</td>
+                                                <td>{{ record.students_completed }}</td>
+                                            </tr>
+                                    {% endfor %}
+                                {% else %}
+                                <tr>
+                                    <td colspan="7" class="text-center">
+                                        <div class="alert alert-danger mb-0" role="alert">
+                                            <h6 class="font-weight-bold mb-0">No Data Available</h6>
+                                        </div>
+                                    </td>
+                                </tr>
+                                {% endif %}
+                            </tbody>    
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <!-- Card end -->
+        </div>
+        <div class="col-sm-12 col-12">
+
+            <!-- Card start -->
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title">June 2023 - May 2024</div>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered custom-table">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th class="align-middle col-3">Name of Certificate/ Value added course offered and online courses of MOOCs, SWAYAM, NPTEL etc. where the students of the institution have enrolled and successfully completed</th>
+                                    <th class="align-middle">Course Code (if any)</th>
+                                    <th class="align-middle">Year of offering/study</th>
+                                    <th class="align-middle col-2">Period (from date - to date)</th>
+                                    <th class="align-middle">Duration of course</th>
+                                    <th class="align-middle">Number of students enrolled in the year</th>
+                                    <th class="align-middle ">Number of Students completing the course in the year</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% if 2023_records %}
+                                    {% for record in 2023_records %}
+                                            <tr>
+                                                <td>{{ record.course_name }}</td>
+                                                <td>{{ record.course_code }}</td>
+                                                <td>{{ record.year_of_study }}</td>
+                                                <td>{{ record.period_from }} - {{ record.period_to }}</td>
+                                                <td>{{ record.duration }}</td>
+                                                <td>{{ record.students_enrolled }}</td>
+                                                <td>{{ record.students_completed }}</td>
+                                            </tr>
+                                    {% endfor %}
+                                {% else %}
+                                <tr>
+                                    <td colspan="7" class="text-center">
+                                        <div class="alert alert-danger mb-0" role="alert">
+                                            <h6 class="font-weight-bold mb-0">No Data Available</h6>
+                                        </div>
+                                    </td>
+                                </tr>
+                                {% endif %}
+                            </tbody>    
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <!-- Card end -->
+        </div>
+        <div class="col-sm-12 col-12">
+
+            <!-- Card start -->
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title">June 2024 - May 2025</div>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered custom-table">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th class="align-middle col-3">Name of Certificate/ Value added course offered and online courses of MOOCs, SWAYAM, NPTEL etc. where the students of the institution have enrolled and successfully completed</th>
+                                    <th class="align-middle">Course Code (if any)</th>
+                                    <th class="align-middle">Year of offering/study</th>
+                                    <th class="align-middle col-2">Period (from date - to date)</th>
+                                    <th class="align-middle">Duration of course</th>
+                                    <th class="align-middle">Number of students enrolled in the year</th>
+                                    <th class="align-middle ">Number of Students completing the course in the year</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% if 2024_records %}
+                                    {% for record in 2024_records %}
+                                            <tr>
+                                                <td>{{ record.course_name }}</td>
+                                                <td>{{ record.course_code }}</td>
+                                                <td>{{ record.year_of_study }}</td>
+                                                <td>{{ record.period_from }} - {{ record.period_to }}</td>
+                                                <td>{{ record.duration }}</td>
+                                                <td>{{ record.students_enrolled }}</td>
+                                                <td>{{ record.students_completed }}</td>
+                                            </tr>
+                                    {% endfor %}
+                                {% else %}
+                                <tr>
+                                    <td colspan="7" class="text-center">
+                                        <div class="alert alert-danger mb-0" role="alert">
+                                            <h6 class="font-weight-bold mb-0">No Data Available</h6>
+                                        </div>
+                                    </td>
+                                </tr>
+                                {% endif %}
+                            </tbody>    
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <!-- Card end -->
+        </div>
+        <div class="col-sm-12 col-12">
+
+            <!-- Card start -->
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title">June 2025 - May 2026</div>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered custom-table">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th class="align-middle col-3">Name of Certificate/ Value added course offered and online courses of MOOCs, SWAYAM, NPTEL etc. where the students of the institution have enrolled and successfully completed</th>
+                                    <th class="align-middle">Course Code (if any)</th>
+                                    <th class="align-middle">Year of offering/study</th>
+                                    <th class="align-middle col-2">Period (from date - to date)</th>
+                                    <th class="align-middle">Duration of course</th>
+                                    <th class="align-middle">Number of students enrolled in the year</th>
+                                    <th class="align-middle ">Number of Students completing the course in the year</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% if 2025_records %}
+                                    {% for record in 2025_records %}
+                                        {% if record.year == 2025 %}
+                                            <tr>
+                                                <td>{{ record.course_name }}</td>
+                                                <td>{{ record.course_code }}</td>
+                                                <td>{{ record.year_of_study }}</td>
+                                                <td>{{ record.period_from }} - {{ record.period_to }}</td>
+                                                <td>{{ record.duration }}</td>
+                                                <td>{{ record.students_enrolled }}</td>
+                                                <td>{{ record.students_completed }}</td>
+                                            </tr>
+                                        {% endif %}
+                                    {% endfor %}
+                                {% else %}
+                                <tr>
+                                    <td colspan="7" class="text-center">
+                                        <div class="alert alert-danger mb-0" role="alert">
+                                            <h6 class="font-weight-bold mb-0">No Data Available</h6>
+                                        </div>
+                                    </td>
+                                </tr>
+                                {% endif %}
+                            </tbody>    
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <!-- Card end -->
+        </div>
+    </div>
+</div>
+
+{% endblock %}

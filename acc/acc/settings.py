@@ -85,10 +85,11 @@ DATABASES = {
         'NAME': 'acc',
         'HOST':'localhost',
         'USER':'root',
-        'PASSWORD': 'root123',
+        'PASSWORD':'NIKHIL@2003',
         'PORT':3306,
     }
 }
+
 
 
 # Password validation

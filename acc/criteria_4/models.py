@@ -1,12 +1,13 @@
 from django.db import models
 
+
 class Criteria_4_1_2(models.Model):
     YEAR_CHOICES = [
-        (1, 'Year 1'),
-        (2, 'Year 2'),
-        (3, 'Year 3'),
-        (4, 'Year 4'),
-        (5, 'Year 5'),
+        (2021, 'June 2021 - 2022'),
+        (2022, '2022-2023'),
+        (2023, '2023-2024'),
+        (2024, '2024-2025'),
+        (2025, '2025-2026'),
     ]
 
     year = models.IntegerField(choices=YEAR_CHOICES)
@@ -19,12 +20,14 @@ class Criteria_4_1_2(models.Model):
     def __str__(self):
         return f"Year {self.year} - {self.head_of_expenditure}: {self.amount_in_lakhs} Lakhs"
 
+
 class Criteria_4_1_2_Total(models.Model):
     year = models.IntegerField(choices=Criteria_4_1_2.YEAR_CHOICES)
     total_amount_in_lakhs = models.DecimalField(max_digits=10, decimal_places=2)
 
     def __str__(self):
         return f"Total for Year {self.year}: {self.total_amount_in_lakhs} Lakhs"
+
 
 class Criteria_4_4_1(models.Model):
     YEAR_CHOICES = [
@@ -54,15 +57,6 @@ class Criteria_4_4_1_Total(models.Model):
 
 
 class Criteria_4_1_1(models.Model):
-    YEAR_CHOICES = [
-        (1, 'Year 1'),
-        (2, 'Year 2'),
-        (3, 'Year 3'),
-        (4, 'Year 4'),
-        (5, 'Year 5'),
-    ]
-
-    year = models.IntegerField(choices=YEAR_CHOICES)
     description = models.TextField(
         help_text="Describe the adequacy of facilities in a maximum of 500 words."
     )
@@ -80,8 +74,9 @@ class Criteria_4_1_1(models.Model):
     )
 
     def __str__(self):
-        return f"{self.year} - {self.description[:50]}"
-    
+        return self.description[:50]
+
+
 class Criteria_4_2_1(models.Model):
     YEAR_CHOICES = [
         (1, 'Year 1'),

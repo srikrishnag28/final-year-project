@@ -16,79 +16,46 @@ $("#sidebar-togglescreen").on('click', function () {
 });
 
 
-
-// Sidebars JS
 jQuery(function ($) {
+    // Toggle the main sidebar dropdown and arrow
+    $(".sidebar-dropdown > a").on('click', function (e) {
+        if ($(e.target).is("i")) {
+            var submenu = $(this).next(".sidebar-submenu");
+            var icon = $(this).find("i");
 
-	$(".sidebar-dropdown > a").on('click', function () {
-		$(".sidebar-submenu").slideUp(200);
-		if ($(this).parent().hasClass("active")) {
-			$(".sidebar-dropdown").removeClass("active");
-			$(this).parent().removeClass("active");
-		} else {
-			$(".sidebar-dropdown").removeClass("active");
-			$(this).next(".sidebar-submenu").slideDown(200);
-			$(this).parent().addClass("active");
-		}
-	});
+            // Toggle the submenu visibility
+            submenu.slideToggle(200);
+            $(this).parent().toggleClass("active");
 
+            // Toggle the icon class
+            if (icon.hasClass("bi-caret-down")) {
+                icon.removeClass("bi-caret-down").addClass("bi-caret-up-fill");
+            } else {
+                icon.removeClass("bi-caret-up-fill").addClass("bi-caret-down");
+            }
+        }
+    });
 
+    // Toggle the sub-sidebar dropdown and arrow
+    $(".sub-sidebar-dropdown > a").on('click', function (e) {
+        if ($(e.target).is("i")) {
+            var subsubmenu = $(this).next(".sub-sidebar-submenu");
+            var subIcon = $(this).find("i");
 
-	// Added by Srinu 
-	$(function(){
-		// When the window is resized, 
-		$(window).resize(function(){
-			// When the width and height meet your specific requirements or lower
-			if ($(window).width() <= 768){
-				$(".page-wrapper").removeClass("pinned");
-			}
-		});
-		// When the window is resized, 
-		$(window).resize(function(){
-			// When the width and height meet your specific requirements or lower
-			if ($(window).width() >= 768){
-				$(".page-wrapper").removeClass("toggled");
-			}
-		});
-	});
+            // Toggle the sub-submenu visibility
+            subsubmenu.slideToggle(200);
+            $(this).parent().toggleClass("active");
 
+            // Toggle the icon class for sub-menu
+            if (subIcon.hasClass("bi-caret-down")) {
+                subIcon.removeClass("bi-caret-down").addClass("bi-caret-up-fill");
+            } else {
+                subIcon.removeClass("bi-caret-up-fill").addClass("bi-caret-down");
+            }
+        }
+    });
 });
 
-jQuery(function ($) {
-
-	$(".sub-sidebar-dropdown > a").on('click', function () {
-		$(".sub-sidebar-submenu").slideUp(200);
-		if ($(this).parent().hasClass("active")) {
-			$(".sub-sidebar-dropdown").removeClass("active");
-			$(this).parent().removeClass("active");
-		} else {
-			$(".sub-sidebar-dropdown").removeClass("active");
-			$(this).next(".sub-sidebar-submenu").slideDown(200);
-			$(this).parent().addClass("active");
-		}
-	});
-
-
-
-	// Added by Srinu 
-	$(function(){
-		// When the window is resized, 
-		$(window).resize(function(){
-			// When the width and height meet your specific requirements or lower
-			if ($(window).width() <= 768){
-				$(".page-wrapper").removeClass("pinned");
-			}
-		});
-		// When the window is resized, 
-		$(window).resize(function(){
-			// When the width and height meet your specific requirements or lower
-			if ($(window).width() >= 768){
-				$(".page-wrapper").removeClass("toggled");
-			}
-		});
-	});
-
-});
 
 
 // Toggle graph day selection

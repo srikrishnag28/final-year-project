@@ -1,0 +1,101 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<!-- Content wrapper start -->
+<div class="content-wrapper">
+	<!-- Row start -->
+	<div class="row">
+		<div class="col-sm-12 col-12">
+			{% include 'messages.html' %}
+			<!-- Card start -->
+			<div class="card">
+				<div class="card-header">
+					<div class="card-title">Criteria 2.7.1</div>
+				</div>
+
+				<div class="card-body">
+					<!-- Row start -->
+					<!-- your_template.html -->
+					<form method="post" action="{% url 'criteria_2_7_1_form' %}">
+						{% csrf_token %}
+						<div class="row">
+							<div class="col-12">
+								<div class="form-section-title">Course Details</div>
+							</div>
+							<div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+								<div class="mb-3">
+									<label class="form-label">Name of the student</label>
+									{{ form.name }}
+								</div>
+							</div>
+							<div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+								<div class="mb-3">
+									<label class="form-label">Gender</label>
+									{{ form.gender }}
+								</div>
+							</div>
+							<div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+								<div class="mb-3">
+									<label class="form-label">Category</label>
+									{{ form.category }}
+								</div>
+							</div>
+							<div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+								<div class="mb-3">
+									<label class="form-label">State of Domicile</label>
+									{{ form.state_of_domicile }}
+								</div>
+							</div>
+							<div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+								<div class="mb-3">
+									<label class="form-label">Nationality</label>
+									{{ form.nationality }}
+								</div>
+							</div>
+							<div class="col-xxl-6 col-xl-6 col-lg-4 col-md-4 col-sm-12 col-12">
+								<div class="mb-3">
+									<label class="form-label">Email ID</label>
+									{{ form.email }}
+								</div>
+							</div>
+							<div class="col-xxl-6 col-xl-6 col-lg-4 col-md-4 col-sm-12 col-12">
+								<div class="mb-3">
+									<label class="form-label">Program Name</label>
+									{{ form.program_name }}
+								</div>
+							</div>
+							<div class="col-xxl-4 col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12">
+							</div>
+							<div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+								<div class="mb-3">
+									<label class="form-label">Unique Enrolment ID / College ID / University Enrolment Number</label>
+									{{ form.enrolment_id }}
+								</div>
+							</div>
+							<div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+								<div class="mb-3">
+									<label class="form-label">Year of Joining</label>
+									{{ form.year_of_joining }}
+								</div>
+							</div>
+						</div>
+
+						<!-- Form actions footer start -->
+						<div class="form-actions-footer">
+							<a href="{% url 'criteria_2_7_1' %}" class="btn btn-light">Cancel</a>
+							<button type="submit" class="btn btn-success">Submit</button>
+						</div>
+					</form>
+					<!-- Form actions footer end -->
+				</div>
+			</div>
+			<!-- Card end -->
+		</div>
+	</div>
+	<!-- Row end -->
+</div>
+<!-- Content wrapper end -->
+
+{% endblock %}

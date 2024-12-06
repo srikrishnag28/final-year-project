@@ -163,3 +163,6 @@ class Criteria_2_7_1(models.Model):
         return f"{self.name} ({self.program_name})"
 
 
+
+
+

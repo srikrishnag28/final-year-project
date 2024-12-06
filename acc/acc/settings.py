@@ -43,7 +43,7 @@ INSTALLED_APPS = [
     'criteria_2',
     'criteria_3',
     'criteria_4',
-
+    'criteria_7',
 ]
 
 MIDDLEWARE = [

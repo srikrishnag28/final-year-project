@@ -9,7 +9,7 @@
             {% include 'messages.html' %}
             <div class="card">
                 <div class="card-body d-flex justify-content-between align-items-center">
-                    <h3 class="card-title" style="font-size: 1.5rem;">Criteria 4_1_1</h3>
+                    <h3 class="card-title" style="font-size: 1.5rem;">Criteria 4_2_1</h3>
                     <div>
                         {% if request.user.user_type == "HOD" %}
                         <div class="btn-group">
@@ -42,13 +42,10 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-header d-flex flex-column align-items-start">
-                    <p class="fs-5 fw-bold">The Institution has adequate infrastructure and other facilities for:</p>
-                    <div class="mt-3">
-                        <p>• Teaching – learning, viz., classrooms, laboratories, computing equipment, etc.</p>
-                        <p>• ICT-enabled facilities such as smart class, LMS, etc.</p>
-                        <p>• Facilities for cultural and sports activities, yoga centre, games (indoor and outdoor),
-                            gymnasium, auditorium, etc.</p>
-                    </div>
+                    <h4 class="fs-5 fw-bold">Library is automated with digital facilities using Integrated Library
+                        Management
+                        System (ILMS), adequate subscriptions to e-resources and journals are made. The library is
+                        optimally used by the faculty and students </h4>
                     <p class="mt-3">Describe the adequacy of facilities in a maximum of 500 words.</p>
                     <div class="card-footer mt-4">
                         <p class="fw-bold text-danger" style="font-size: 1.1rem;">File Description:</p>
@@ -61,9 +58,9 @@
             </div>
             {% if no_data %}
             <div class="alert alert-warning">
-                <strong>No data available for Criteria 4_1_1.</strong> Please add the details using the form below.
+                <strong>No data available for Criteria 4_2_1.</strong> Please add the details using the form below.
             </div>
-            <a href="{% url 'criteria_4_1_1_form' %}" class="btn btn-primary">Go to Form</a>
+            <a href="{% url 'criteria_4_2_1_form' %}" class="btn btn-primary">Go to Form</a>
             {% else %}
             <!-- Displaying the single data if available -->
             {% if criteria_data %}
@@ -96,8 +93,8 @@
                     <!-- File Description Section moved below -->
 
 
-                    <a href="{% url 'criteria_4_1_1_form' %}" class="btn btn-warning">Update</a>
-                    <a href="{% url 'criteria_4_1_1_delete' %}" class="btn btn-danger">Delete</a>
+                    <a href="{% url 'criteria_4_2_1_form' %}" class="btn btn-warning">Update</a>
+                    <a href="{% url 'criteria_4_2_1_delete' %}" class="btn btn-danger">Delete</a>
                 </div>
             </div>
             {% endif %}

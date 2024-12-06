@@ -12479,34 +12479,6 @@ img {
 .sidebar-wrapper .sidebar-menu ul li.active .sidebar-submenu {
   display: block;
 }
-.sidebar-wrapper .sidebar-menu .sidebar-dropdown > a:after {
-  font-family: "bootstrap-icons" !important;
-  font-weight: 700;
-  font-size: 0.8rem;
-  content: "\f282";
-  display: inline-block;
-  position: absolute;
-  right: 15px;
-  top: 16px;
-  -webkit-transition: -webkit-transform 0.3s ease;
-  transition: -webkit-transform 0.3s ease;
-  transition: transform 0.3s ease;
-  transition: transform 0.3s ease, -webkit-transform 0.3s ease;
-}
-.sidebar-wrapper .sidebar-menu .sidebar-dropdown .sidebar-submenu .sub-sidebar-dropdown > a:after {
-  font-family: "bootstrap-icons" !important;
-  font-weight: 700;
-  font-size: 0.8rem;
-  content: "\f282";
-  display: inline-block;
-  position: absolute;
-  right: 15px;
-  top: 11px;
-  -webkit-transition: -webkit-transform 0.3s ease;
-  transition: -webkit-transform 0.3s ease;
-  transition: transform 0.3s ease;
-  transition: transform 0.3s ease, -webkit-transform 0.3s ease;
-}
 .sidebar-wrapper .sidebar-menu .sidebar-dropdown .sidebar-submenu {
   display: none;
 }

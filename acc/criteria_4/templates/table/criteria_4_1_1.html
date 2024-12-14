@@ -61,9 +61,11 @@
             </div>
             {% if no_data %}
             <div class="alert alert-warning">
-                <strong>No data available for Criteria 4_1_1.</strong> Please add the details using the form below.
+                <strong>No data available for Criteria 4_1_1.</strong>
             </div>
-            <a href="{% url 'criteria_4_1_1_form' %}" class="btn btn-primary">Go to Form</a>
+            {% if has_access or request.user.user_type == "HOD" %}
+            <a href="{% url 'criteria_4_1_1_form' %}" class="btn btn-primary">Add Data</a>
+            {% endif %}
             {% else %}
             <!-- Displaying the single data if available -->
             {% if criteria_data %}
@@ -95,9 +97,10 @@
 
                     <!-- File Description Section moved below -->
 
-
+                    {% if has_access or request.user.user_type == "HOD" %}
                     <a href="{% url 'criteria_4_1_1_form' %}" class="btn btn-warning">Update</a>
                     <a href="{% url 'criteria_4_1_1_delete' %}" class="btn btn-danger">Delete</a>
+                    {% endif %}
                 </div>
             </div>
             {% endif %}

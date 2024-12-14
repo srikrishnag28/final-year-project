@@ -1,0 +1,100 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<!-- Content wrapper start -->
+<div class="content-wrapper">
+	<!-- Row start -->
+	<div class="row">
+		<div class="col-sm-12 col-12">
+			{% include 'messages.html' %}
+			<!-- Card start -->
+			<div class="card">
+				<div class="card-header">
+					<div class="card-title">Criteria 3.3.2</div>
+				</div>
+				<div class="card-body">
+					<!-- Form start -->
+					<form method="post" action="{% url 'criteria_3_3_2_form' %}">
+						{% csrf_token %}
+						<div class="row">
+                            <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                                <div class="mb-3">
+                                    <label class="form-label">Name of the teacher</label>
+                                    {{ form.name_of_teacher }}
+                                </div>
+                            </div>
+                            <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                                <div class="mb-3">
+                                    <label class="form-label">Title of the book/chapters published</label>
+                                    {{ form.title_of_book_or_chapters_published }}
+                                </div>
+                            </div>
+                            <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                                <div class="mb-3">
+                                    <label class="form-label">Title of the paper</label>
+                                    {{ form.title_of_paper }}
+                                </div>
+                            </div>
+                            <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                                <div class="mb-3">
+                                    <label class="form-label">Title of the proceedings of the conference</label>
+                                    {{ form.title_of_proceedings_of_conference }}
+                                </div>
+                            </div>
+                            <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                                <div class="mb-3">
+                                    <label class="form-label">Name of the conference</label>
+                                    {{ form.name_of_conference }}
+                                </div>
+                            </div>
+                            <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                                <div class="mb-3">
+                                    <label class="form-label">National / International</label>
+                                    {{ form.national_or_international }}
+                                </div>
+                            </div>
+                            <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                                <div class="mb-3">
+                                    <label class="form-label">Calendar Year of publication</label>
+                                    {{ form.calendar_year_of_publication }}
+                                </div>
+                            </div>
+                            <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                                <div class="mb-3">
+                                    <label class="form-label">ISBN number of the proceeding</label>
+                                    {{ form.isbn_number_of_proceeding }}
+                                </div>
+                            </div>
+                            <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                                <div class="mb-3">
+                                    <label class="form-label">Affiliating Institute at the time of publication</label>
+                                    {{ form.affiliating_institute_at_time_of_publication }}
+                                </div>
+                            </div>
+                            <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                                <div class="mb-3">
+                                    <label class="form-label">Name of the publisher</label>
+                                    {{ form.name_of_publisher }}
+                                </div>
+                            </div>
+                        </div>
+						<!-- Form actions footer start -->
+						<div class="form-actions-footer">
+							<a href="{% url 'criteria_3_3_2' %}" class="btn btn-light">Cancel</a>
+							<button type="submit" class="btn btn-success">Submit</button>
+						</div>
+						<!-- Form actions footer end -->
+					</form>
+					<!-- Form end -->
+				</div>
+			</div>
+			<!-- Card end -->
+		</div>
+	</div>
+	<!-- Row end -->
+</div>
+<!-- Content wrapper end -->
+
+{% endblock %}

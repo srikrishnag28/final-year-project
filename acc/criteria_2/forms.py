@@ -28,6 +28,187 @@ class CriteriaForm_2_1_1(forms.ModelForm):
         }
 
 
+class CriteriaForm_2_3_1(forms.ModelForm):
+    class Meta:
+        model = Criteria_2_3_1
+        fields = ['description', 'additional_information_file', 'additional_information_link']
+
+    description = forms.CharField(
+        widget=forms.Textarea(attrs={
+            'class': 'form-control mb-3',
+            'rows': '4',
+            'id': 'description',
+            'required': True,
+            'placeholder': (
+                'Describe in a maximum of 500 words.'
+            )
+        })
+    )
+    additional_information_file = forms.FileField(
+        required=False,
+        widget=forms.ClearableFileInput(attrs={
+            'class': 'form-control mb-3',
+            'id': 'fileUpload',
+            'accept': '.pdf, .docx, .xlsx'
+        })
+    )
+    additional_information_link = forms.URLField(
+        required=False,
+        widget=forms.URLInput(attrs={
+            'class': 'form-control mb-3',
+            'id': 'relatedLink',
+            'placeholder': 'https://example.com'
+        })
+    )
+
+
+class CriteriaForm_2_4_2_1(forms.ModelForm):
+    class Meta:
+        model = Criteria_2_4_2_1
+        fields = [
+            'name', 'id_number', 'vidwan_id', 'email', 'gender', 'designation',
+            'date_of_joining_institution', 'nature_of_appointment', 'department_name',
+            'highest_qualification'
+        ]
+        widgets = {
+            'name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Enter Name'}),
+            'id_number': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Enter ID Number (Optional)'}),
+            'vidwan_id': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Enter Vidwan ID (Optional)'}),
+            'email': forms.EmailInput(attrs={'class': 'form-control', 'placeholder': 'Enter Email'}),
+            'gender': forms.Select(attrs={'class': 'form-select'}),
+            'designation': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Enter Designation'}),
+            'date_of_joining_institution': forms.DateInput(attrs={'class': 'form-control', 'type': 'date'}),
+            'nature_of_appointment': forms.Select(attrs={'class': 'form-select'}),
+            'department_name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Enter Department Name'}),
+            'highest_qualification': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Enter Highest Qualification'}),
+        }
+
+
+class CriteriaForm_2_4_2_2(forms.ModelForm):
+    class Meta:
+        model = Criteria_2_4_2_2
+        fields = [
+            'name', 'id_number', 'vidwan_id', 'email', 'gender', 'designation',
+            'date_of_joining', 'date_of_leaving', 'nature_of_appointment', 'department_name',
+            'highest_qualification'
+        ]
+        widgets = {
+            'name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Enter Name'}),
+            'id_number': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Enter ID Number (Optional)'}),
+            'vidwan_id': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Enter Vidwan ID (Optional)'}),
+            'email': forms.EmailInput(attrs={'class': 'form-control', 'placeholder': 'Enter Email'}),
+            'gender': forms.Select(attrs={'class': 'form-select'}),
+            'designation': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Enter Designation'}),
+            'date_of_joining': forms.DateInput(attrs={'class': 'form-control', 'type': 'date'}),
+            'date_of_leaving': forms.DateInput(attrs={'class': 'form-control', 'type': 'date', 'placeholder': 'Optional'}),
+            'nature_of_appointment': forms.Select(attrs={'class': 'form-select'}),
+            'department_name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Enter Department Name'}),
+            'highest_qualification': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Enter Highest Qualification'}),
+        }
+
+
+class CriteriaForm_2_5_1(forms.ModelForm):
+    class Meta:
+        model = Criteria_2_5_1
+        fields = ['description', 'additional_information_file', 'additional_information_link']
+
+    description = forms.CharField(
+        widget=forms.Textarea(attrs={
+            'class': 'form-control mb-3',
+            'rows': '4',
+            'id': 'description',
+            'required': True,
+            'placeholder': (
+                'Describe in a maximum of 500 words.'
+            )
+        })
+    )
+    additional_information_file = forms.FileField(
+        required=False,
+        widget=forms.ClearableFileInput(attrs={
+            'class': 'form-control mb-3',
+            'id': 'fileUpload',
+            'accept': '.pdf, .docx, .xlsx'
+        })
+    )
+    additional_information_link = forms.URLField(
+        required=False,
+        widget=forms.URLInput(attrs={
+            'class': 'form-control mb-3',
+            'id': 'relatedLink',
+            'placeholder': 'https://example.com'
+        })
+    )
+
+
+class CriteriaForm_2_6_1(forms.ModelForm):
+    class Meta:
+        model = Criteria_2_6_1
+        fields = ['description', 'additional_information_file', 'additional_information_link']
+
+    description = forms.CharField(
+        widget=forms.Textarea(attrs={
+            'class': 'form-control mb-3',
+            'rows': '4',
+            'id': 'description',
+            'required': True,
+            'placeholder': (
+                'Describe in a maximum of 500 words.'
+            )
+        })
+    )
+    additional_information_file = forms.FileField(
+        required=False,
+        widget=forms.ClearableFileInput(attrs={
+            'class': 'form-control mb-3',
+            'id': 'fileUpload',
+            'accept': '.pdf, .docx, .xlsx'
+        })
+    )
+    additional_information_link = forms.URLField(
+        required=False,
+        widget=forms.URLInput(attrs={
+            'class': 'form-control mb-3',
+            'id': 'relatedLink',
+            'placeholder': 'https://example.com'
+        })
+    )
+
+
+class CriteriaForm_2_6_2(forms.ModelForm):
+    class Meta:
+        model = Criteria_2_6_2
+        fields = ['description', 'additional_information_file', 'additional_information_link']
+
+    description = forms.CharField(
+        widget=forms.Textarea(attrs={
+            'class': 'form-control mb-3',
+            'rows': '4',
+            'id': 'description',
+            'required': True,
+            'placeholder': (
+                'Describe in a maximum of 500 words.'
+            )
+        })
+    )
+    additional_information_file = forms.FileField(
+        required=False,
+        widget=forms.ClearableFileInput(attrs={
+            'class': 'form-control mb-3',
+            'id': 'fileUpload',
+            'accept': '.pdf, .docx, .xlsx'
+        })
+    )
+    additional_information_link = forms.URLField(
+        required=False,
+        widget=forms.URLInput(attrs={
+            'class': 'form-control mb-3',
+            'id': 'relatedLink',
+            'placeholder': 'https://example.com'
+        })
+    )
+
+
 class CriteriaForm_2_6_3(forms.ModelForm):
     class Meta:
         model = Criteria_2_6_3

@@ -73,56 +73,182 @@ class Criteria_2_1_2(models.Model):
     
 
 class Criteria_2_3_1(models.Model):
-    year = models.IntegerField(
-        choices=[(2021, '2021-2022'),
-        (2022, '2022-2023'),
-        (2023, '2023-2024'),
-        (2024, '2024-2025'),
-        (2025, '2025-2026'),]
+    description = models.TextField(
+        help_text="Write the description in a maximum of 500 words."
     )
-    description = models.TextField(validators=[validate_word_count])
+    additional_information_file = models.FileField(
+        upload_to='criteria_2/2_3_1/',
+        blank=True,
+        null=True,
+        help_text="Upload any additional information if available."
+    )
+    additional_information_link = models.URLField(
+        max_length=500,
+        blank=True,
+        null=True,
+        help_text="Provide the link for additional information."
+    )
+
+    def save(self, *args, **kwargs):
+        if Criteria_2_3_1.objects.exists():
+            existing = Criteria_2_3_1.objects.first()
+            if existing.pk != self.pk:
+                existing.description = self.description
+                existing.additional_information_file = self.additional_information_file
+                existing.additional_information_link = self.additional_information_link
+                existing.save(
+                    update_fields=['description', 'additional_information_file', 'additional_information_link']
+                )
+                return
+        super().save(*args, **kwargs)
 
     def __str__(self):
-        return f"{self.year} - {self.description[:50]}"
+        return self.description[:50]
+
+
+class Criteria_2_4_2_1(models.Model):
+    name = models.CharField(max_length=255)
+    id_number = models.CharField(max_length=50)
+    vidwan_id = models.CharField(max_length=50, blank=True, null=True)
+    email = models.EmailField()
+    gender = models.CharField(max_length=10, choices=[('Male', 'Male'), ('Female', 'Female'), ('Other', 'Other')])
+    designation = models.CharField(max_length=255)
+    date_of_joining_institution = models.DateField()
+    nature_of_appointment = models.CharField(
+        max_length=50,
+        choices=[('Temporary', 'Temporary'), ('Permanent', 'Permanent')]
+    )
+    department_name = models.CharField(max_length=255)
+    highest_qualification = models.CharField(max_length=255)
+
+    def __str__(self):
+        return f"{self.name} ({self.id_number}) - {self.designation}"
+
+
+class Criteria_2_4_2_2(models.Model):
+    name = models.CharField(max_length=255)
+    id_number = models.CharField(max_length=50, blank=True, null=True)
+    vidwan_id = models.CharField(max_length=50, blank=True, null=True)
+    email = models.EmailField()
+    gender = models.CharField(max_length=10, choices=[('Male', 'Male'), ('Female', 'Female'), ('Other', 'Other')])
+    designation = models.CharField(max_length=255)
+    date_of_joining = models.DateField()
+    date_of_leaving = models.DateField(blank=True, null=True)
+    nature_of_appointment = models.CharField(
+        max_length=50,
+        choices=[
+            ('Against Sanctioned Post', 'Against Sanctioned Post'),
+            ('Temporary', 'Temporary'),
+            ('Permanent', 'Permanent')
+        ]
+    )
+    department_name = models.CharField(max_length=255)
+    highest_qualification = models.CharField(max_length=255)
+
+    def __str__(self):
+        return f"{self.name} ({self.id_number}) - {self.designation}"
     
+
 class Criteria_2_5_1(models.Model):
-    year = models.IntegerField(
-        choices=[(2021, '2021-2022'),
-        (2022, '2022-2023'),
-        (2023, '2023-2024'),
-        (2024, '2024-2025'),
-        (2025, '2025-2026'),]
+    description = models.TextField(
+        help_text="Write the description in a maximum of 500 words."
     )
-    description = models.TextField(validators=[validate_word_count])
+    additional_information_file = models.FileField(
+        upload_to='criteria_2/2_5_1/',
+        blank=True,
+        null=True,
+        help_text="Upload any additional information if available."
+    )
+    additional_information_link = models.URLField(
+        max_length=500,
+        blank=True,
+        null=True,
+        help_text="Provide the link for additional information."
+    )
+
+    def save(self, *args, **kwargs):
+        if Criteria_2_5_1.objects.exists():
+            existing = Criteria_2_5_1.objects.first()
+            if existing.pk != self.pk:
+                existing.description = self.description
+                existing.additional_information_file = self.additional_information_file
+                existing.additional_information_link = self.additional_information_link
+                existing.save(
+                    update_fields=['description', 'additional_information_file', 'additional_information_link']
+                )
+                return
+        super().save(*args, **kwargs)
 
     def __str__(self):
-        return f"{self.year} - {self.description[:50]}"
+        return self.description[:50]
+    
     
 class Criteria_2_6_1(models.Model):
-    year = models.IntegerField(
-        choices=[(2021, '2021-2022'),
-        (2022, '2022-2023'),
-        (2023, '2023-2024'),
-        (2024, '2024-2025'),
-        (2025, '2025-2026'),]
+    description = models.TextField(
+        help_text="Write the description in a maximum of 500 words."
     )
-    description = models.TextField(validators=[validate_word_count])
+    additional_information_file = models.FileField(
+        upload_to='criteria_2/2_6_1/',
+        blank=True,
+        null=True,
+        help_text="Upload any additional information if available."
+    )
+    additional_information_link = models.URLField(
+        max_length=500,
+        blank=True,
+        null=True,
+        help_text="Provide the link for additional information."
+    )
+
+    def save(self, *args, **kwargs):
+        if Criteria_2_6_1.objects.exists():
+            existing = Criteria_2_6_1.objects.first()
+            if existing.pk != self.pk:
+                existing.description = self.description
+                existing.additional_information_file = self.additional_information_file
+                existing.additional_information_link = self.additional_information_link
+                existing.save(
+                    update_fields=['description', 'additional_information_file', 'additional_information_link']
+                )
+                return
+        super().save(*args, **kwargs)
 
     def __str__(self):
-        return f"{self.year} - {self.description[:50]}"
+        return self.description[:50]
+    
     
 class Criteria_2_6_2(models.Model):
-    year = models.IntegerField(
-        choices=[(2021, '2021-2022'),
-        (2022, '2022-2023'),
-        (2023, '2023-2024'),
-        (2024, '2024-2025'),
-        (2025, '2025-2026'),]
+    description = models.TextField(
+        help_text="Write the description in a maximum of 500 words."
     )
-    description = models.TextField(validators=[validate_word_count])
+    additional_information_file = models.FileField(
+        upload_to='criteria_2/2_6_2/',
+        blank=True,
+        null=True,
+        help_text="Upload any additional information if available."
+    )
+    additional_information_link = models.URLField(
+        max_length=500,
+        blank=True,
+        null=True,
+        help_text="Provide the link for additional information."
+    )
+
+    def save(self, *args, **kwargs):
+        if Criteria_2_6_2.objects.exists():
+            existing = Criteria_2_6_2.objects.first()
+            if existing.pk != self.pk:
+                existing.description = self.description
+                existing.additional_information_file = self.additional_information_file
+                existing.additional_information_link = self.additional_information_link
+                existing.save(
+                    update_fields=['description', 'additional_information_file', 'additional_information_link']
+                )
+                return
+        super().save(*args, **kwargs)
 
     def __str__(self):
-        return f"{self.year} - {self.description[:50]}"
+        return self.description[:50]
     
 class Criteria_2_6_3(models.Model):
     YEAR_CHOICES = [

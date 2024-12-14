@@ -1,0 +1,105 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<!-- Content wrapper start -->
+<div class="content-wrapper">
+	<!-- Row start -->
+	<div class="row">
+		<div class="col-sm-12 col-12">
+			{% include 'messages.html' %}
+			<!-- Card start -->
+			<div class="card">
+				<div class="card-header">
+					<div class="card-title">Criteria 2.4.2.1</div>
+				</div>
+				<div class="card-body">
+					<!-- Row start -->
+					<!-- your_template.html -->
+					<form method="post" action="{% url 'criteria_2_4_2_1_form' %}">
+						{% csrf_token %}
+						<div class="row">
+							<!-- <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+								<div class="mb-3">
+									<label class="form-label">Programme name </label>
+									{{ form.year }}
+								</div>
+							</div> -->
+							<div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                                <div class="mb-3">
+                                    <label class="form-label">Name</label>
+                                    {{ form.name }}
+                                </div>
+                            </div>
+                            <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                                <div class="mb-3">
+                                    <label class="form-label">ID Number</label>
+                                    {{ form.id_number }}
+                                </div>
+                            </div>
+                            <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                                <div class="mb-3">
+                                    <label class="form-label">Vidwan ID</label>
+                                    {{ form.vidwan_id }}
+                                </div>
+                            </div>
+                            <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                                <div class="mb-3">
+                                    <label class="form-label">Email</label>
+                                    {{ form.email }}
+                                </div>
+                            </div>
+                            <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                                <div class="mb-3">
+                                    <label class="form-label">Gender</label>
+                                    {{ form.gender }}
+                                </div>
+                            </div>
+                            <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                                <div class="mb-3">
+                                    <label class="form-label">Designation</label>
+                                    {{ form.designation }}
+                                </div>
+                            </div>
+                            <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                                <div class="mb-3">
+                                    <label class="form-label">Date of Joining</label>
+                                    {{ form.date_of_joining_institution }}
+                                </div>
+                            </div>
+                            <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                                <div class="mb-3">
+                                    <label class="form-label">Nature of Appointment</label>
+                                    {{ form.nature_of_appointment }}
+                                </div>
+                            </div>
+                            <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                                <div class="mb-3">
+                                    <label class="form-label">Department Name</label>
+                                    {{ form.department_name }}
+                                </div>
+                            </div>
+                            <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                                <div class="mb-3">
+                                    <label class="form-label">Highest Qualification</label>
+                                    {{ form.highest_qualification }}
+                                </div>
+                            </div>
+							<!-- Form actions footer start -->
+							<div class="form-actions-footer">
+								<a href="{% url 'criteria_2_4_2' %}" class="btn btn-light">Cancel</a>
+								<button type="submit" class="btn btn-success">Submit</button>
+							</div>
+					</form>
+					<!-- Form actions footer end -->
+				</div>
+			</div>
+			<!-- Card end -->
+		</div>
+	</div>
+	<!-- Row end -->
+</div>
+<!-- Content wrapper end -->
+
+{% endblock %}

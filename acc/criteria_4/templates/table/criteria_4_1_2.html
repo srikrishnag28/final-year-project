@@ -34,7 +34,7 @@
                             </ul>
                         </div>
                         {% endif %}
-                        {% if flag or request.user.user_type == "HOD" %}
+                        {% if has_access or request.user.user_type == "HOD" %}
                         <a href="{% url 'criteria_4_1_2_form' %}" class="btn btn-info"><i class="bi bi-plus-square"></i>
                             New</a>
                         <form action="{% url 'upload_excel_4_1_2' %}" method="post" enctype="multipart/form-data"

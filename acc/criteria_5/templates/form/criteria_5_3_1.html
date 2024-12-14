@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<!-- Content wrapper start -->
+<div class="content-wrapper">
+	<!-- Row start -->
+	<div class="row">
+		<div class="col-sm-12 col-12">
+			{% include 'messages.html' %}
+			<!-- Card start -->
+			<div class="card">
+				<div class="card-header">
+					<div class="card-title">Criteria 5.3.1</div>
+				</div>
+
+				<div class="card-body">
+					<!-- Row start -->
+					<!-- your_template.html -->
+					<form method="post" action="{% url 'criteria_5_3_1_form' %}">
+						{% csrf_token %}
+						<div class="row">
+							<div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+								<div class="mb-3">
+									<label class="form-label">Year</label>
+									{{ form.year }}
+								</div>
+							</div>
+							<div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+								<div class="mb-3">
+									<label class="form-label">Name of the award/ medal
+									</label>
+									{{ form.name_of_award_medal }}
+								</div>
+							</div>
+							<div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+								<div class="mb-3">
+									<label class="form-label">Team / Individual
+									</label>
+									{{ form.team_or_individual }}
+								</div>
+							</div>
+							<div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+								<div class="mb-3">
+									<label class="form-label"> Level of competition (University / State / National /
+										International)
+									</label>
+									{{ form.level_of_competition }}
+								</div>
+							</div>
+							<div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+								<div class="mb-3">
+									<label class="form-label"> Nature of competition (Sports / Cultural)
+									</label>
+									{{ form.nature_of_competition }}
+								</div>
+							</div>
+							<div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+								<div class="mb-3">
+									<label class="form-label"> Name of the student(s)
+									</label>
+									{{ form.name_of_students }}
+								</div>
+							</div>
+							<!-- Form actions footer start -->
+							<div class="form-actions-footer">
+								<a href="{% url 'criteria_5_3_1' %}" class="btn btn-light">Cancel</a>
+								<button type="submit" class="btn btn-success">Submit</button>
+							</div>
+					</form>
+					<!-- Form actions footer end -->
+				</div>
+			</div>
+			<!-- Card end -->
+		</div>
+	</div>
+	<!-- Row end -->
+</div>
+<!-- Content wrapper end -->
+
+{% endblock %}

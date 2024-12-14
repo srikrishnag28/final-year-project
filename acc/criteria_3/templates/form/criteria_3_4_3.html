@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<!-- Content wrapper start -->
+<div class="content-wrapper">
+	<!-- Row start -->
+	<div class="row">
+		<div class="col-sm-12 col-12">
+			{% include 'messages.html' %}
+			<!-- Card start -->
+			<div class="card">
+				<div class="card-header">
+					<div class="card-title">Criteria 3.4.3</div>
+				</div>
+				<div class="card-body">
+					<!-- Form start -->
+					<form method="post" action="{% url 'criteria_3_4_3_form' %}">
+						{% csrf_token %}
+						<div class="row">
+                            <!-- Name of the activity -->
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="name_of_activity" class="form-label">Name of the activity</label>
+                                    {{ form.name_of_activity }}
+                                </div>
+                            </div>
+
+                            <!-- Organising unit/agency/collaborating agency -->
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="organising_unit" class="form-label">Organising unit/agency/collaborating agency</label>
+                                    {{ form.organising_unit_or_agency_or_collaborating_agency }}
+                                </div>
+                            </div>
+
+                            <!-- Name of the scheme -->
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="name_of_scheme" class="form-label">Name of the scheme</label>
+                                    {{ form.name_of_scheme }}
+                                </div>
+                            </div>
+
+                            <!-- Year of the activity -->
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="year_of_activity" class="form-label">Year of the activity</label>
+                                    {{ form.year_of_activity }}
+                                </div>
+                            </div>
+                        </div>
+
+						<!-- Form actions -->
+						<div class="form-actions-footer mt-3">
+							<a href="{% url 'criteria_3_4_3' %}" class="btn btn-light">Cancel</a>
+							<button type="submit" class="btn btn-success">Submit</button>
+						</div>
+					</form>
+
+					<!-- Form end -->
+				</div>
+			</div>
+			<!-- Card end -->
+		</div>
+	</div>
+	<!-- Row end -->
+</div>
+<!-- Content wrapper end -->
+
+{% endblock %}

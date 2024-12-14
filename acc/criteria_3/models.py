@@ -8,13 +8,14 @@ def validate_word_count(value):
 
 class Criteria_3_1_1(models.Model):
     name = "3_1_1"
-    year = models.IntegerField(
-        choices=[(2021, '2021-2022'),
-        (2022, '2022-2023'),
-        (2023, '2023-2024'),
-        (2024, '2024-2025'),
-        (2025, '2025-2026'),]
-    )
+    YEAR_CHOICES = [
+        (2021, 'June 2021 to May 2022'),
+        (2022, 'June 2022 to May 2023'),
+        (2023, 'June 2023 to May 2024'),
+        (2024, 'June 2024 to May 2025'),
+        (2025, 'June 2025 to May 2026'),
+    ]
+    year = models.IntegerField(choices=YEAR_CHOICES)
     project_name = models.CharField(max_length=255)
     principal_investigator = models.CharField(max_length=255)
     department = models.CharField(max_length=255)
@@ -31,27 +32,47 @@ class Criteria_3_1_1(models.Model):
         return f"{self.year} - {self.project_name})"
 
 class Criteria_3_2_1(models.Model):
-    year = models.IntegerField(
-        choices=[(2021, '2021-2022'),
-        (2022, '2022-2023'),
-        (2023, '2023-2024'),
-        (2024, '2024-2025'),
-        (2025, '2025-2026'),]
+    description = models.TextField(
+        help_text="Describe the adequacy of facilities in a maximum of 500 words."
     )
-    description = models.TextField(validators=[validate_word_count])
+    additional_information_file = models.FileField(
+        upload_to='criteria_3/3_2_1/',
+        blank=True,
+        null=True,
+        help_text="Upload additional information if available."
+    )
+    additional_information_link = models.URLField(
+        max_length=500,
+        blank=True,
+        null=True,
+        help_text="Provide a link for additional information if available."
+    )
+
+    def save(self, *args, **kwargs):
+        if Criteria_3_2_1.objects.exists():
+            existing = Criteria_3_2_1.objects.first()
+            if existing.pk != self.pk:
+                existing.description = self.description
+                existing.additional_information_file = self.additional_information_file
+                existing.additional_information_link = self.additional_information_link
+                existing.save(
+                    update_fields=['description', 'additional_information_file', 'additional_information_link'])
+                return
+        super().save(*args, **kwargs)
 
     def __str__(self):
-        return f"{self.year} - {self.description[:50]}"
+        return self.description[:50]
     
 
 class Criteria_3_2_2(models.Model):
-    year = models.IntegerField(
-        choices=[(2021, '2021-2022'),
-        (2022, '2022-2023'),
-        (2023, '2023-2024'),
-        (2024, '2024-2025'),
-        (2025, '2025-2026'),]
-    )
+    YEAR_CHOICES = [
+        (2021, 'June 2021 to May 2022'),
+        (2022, 'June 2022 to May 2023'),
+        (2023, 'June 2023 to May 2024'),
+        (2024, 'June 2024 to May 2025'),
+        (2025, 'June 2025 to May 2026'),
+    ]
+    year = models.IntegerField(choices=YEAR_CHOICES)
     event_name = models.CharField(max_length=255)
     num_participants = models.PositiveIntegerField()
     date_from = models.DateField()
@@ -63,13 +84,14 @@ class Criteria_3_2_2(models.Model):
     
 
 class Criteria_3_3_1(models.Model):
-    year = models.PositiveIntegerField(
-        choices=[(2021, '2021-2022'),
-        (2022, '2022-2023'),
-        (2023, '2023-2024'),
-        (2024, '2024-2025'),
-        (2025, '2025-2026'),]
-    )  # Dedicated year field
+    YEAR_CHOICES = [
+        (2021, '2020-2021'),
+        (2022, '2021-2022'),
+        (2023, '2022-2023'),
+        (2024, '2023-2024'),
+        (2025, '2024-2025'),
+    ]
+    year = models.IntegerField(choices=YEAR_CHOICES)
     title_of_paper = models.CharField(max_length=255)
     authors = models.CharField(max_length=500)  # Considering multiple authors
     department = models.CharField(max_length=255)
@@ -83,87 +105,108 @@ class Criteria_3_3_1(models.Model):
     def __str__(self):
         return f"{self.title_of_paper} ({self.year})"
 
+
 class Criteria_3_3_2(models.Model):
-    year = models.PositiveIntegerField(
-        choices=[(2021, '2021-2022'),
-        (2022, '2022-2023'),
-        (2023, '2023-2024'),
-        (2024, '2024-2025'),
-        (2025, '2025-2026'),]
-    )
-    serial_number = models.AutoField(primary_key=True)
-    teacher_name = models.CharField(max_length=255)
-    book_or_chapter_title = models.CharField(max_length=255, blank=True, null=True)
-    paper_title = models.CharField(max_length=255, blank=True, null=True)
-    proceedings_title = models.CharField(max_length=255, blank=True, null=True)
-    conference_name = models.CharField(max_length=255, blank=True, null=True)
-    conference_type = models.CharField(
-        max_length=20,
-        choices=[('National', 'National'), ('International', 'International')],
-    )
-    publication_year = models.PositiveIntegerField()
-    isbn_number = models.CharField(max_length=20, blank=True, null=True)
-    affiliating_institute = models.CharField(max_length=255, blank=True, null=True)
-    publisher_name = models.CharField(max_length=255, blank=True, null=True)
+    name_of_teacher = models.CharField(max_length=255)
+    title_of_book_or_chapters_published = models.CharField(max_length=500, blank=True, null=True)
+    title_of_paper = models.CharField(max_length=500, blank=True, null=True)
+    title_of_proceedings_of_conference = models.CharField(max_length=500, blank=True, null=True)
+    name_of_conference = models.CharField(max_length=255, blank=True, null=True)
+    national_or_international = models.CharField(max_length=50, choices=[('National', 'National'), ('International', 'International')], blank=True, null=True)
+    calendar_year_of_publication = models.IntegerField()
+    isbn_number_of_proceeding = models.CharField(max_length=20, blank=True, null=True)
+    affiliating_institute_at_time_of_publication = models.CharField(max_length=255)
+    name_of_publisher = models.CharField(max_length=255, blank=True, null=True)
 
     def __str__(self):
-        return f"{self.teacher_name} - {self.paper_title or self.book_or_chapter_title} ({self.publication_year})"
+        return f"{self.name_of_teacher}"
+
 
 class Criteria_3_4_1(models.Model):
-    year = models.IntegerField(
-        choices=[(2021, '2021-2022'),
-        (2022, '2022-2023'),
-        (2023, '2023-2024'),
-        (2024, '2024-2025'),
-        (2025, '2025-2026'),]
+    description = models.TextField(
+        help_text="Describe the adequacy of facilities in a maximum of 500 words."
     )
-    description = models.TextField(validators=[validate_word_count])
+    additional_information_file = models.FileField(
+        upload_to='criteria_3/3_4_1/',
+        blank=True,
+        null=True,
+        help_text="Upload additional information if available."
+    )
+    additional_information_link = models.URLField(
+        max_length=500,
+        blank=True,
+        null=True,
+        help_text="Provide a link for additional information if available."
+    )
+
+    def save(self, *args, **kwargs):
+        if Criteria_3_4_1.objects.exists():
+            existing = Criteria_3_4_1.objects.first()
+            if existing.pk != self.pk:
+                existing.description = self.description
+                existing.additional_information_file = self.additional_information_file
+                existing.additional_information_link = self.additional_information_link
+                existing.save(
+                    update_fields=['description', 'additional_information_file', 'additional_information_link'])
+                return
+        super().save(*args, **kwargs)
 
     def __str__(self):
-        return f"{self.year} - {self.description[:50]}"
+        return self.description[:50]
+
 
 class Criteria_3_4_2(models.Model):
-    year = models.IntegerField(
-        choices=[(2021, '2021-2022'),
-        (2022, '2022-2023'),
-        (2023, '2023-2024'),
-        (2024, '2024-2025'),
-        (2025, '2025-2026'),]
+    description = models.TextField(
+        help_text="Describe the adequacy of facilities in a maximum of 500 words."
     )
-    description = models.TextField(validators=[validate_word_count])
+    additional_information_file = models.FileField(
+        upload_to='criteria_3/3_4_2/',
+        blank=True,
+        null=True,
+        help_text="Upload additional information if available."
+    )
+    additional_information_link = models.URLField(
+        max_length=500,
+        blank=True,
+        null=True,
+        help_text="Provide a link for additional information if available."
+    )
+
+    def save(self, *args, **kwargs):
+        if Criteria_3_4_2.objects.exists():
+            existing = Criteria_3_4_2.objects.first()
+            if existing.pk != self.pk:
+                existing.description = self.description
+                existing.additional_information_file = self.additional_information_file
+                existing.additional_information_link = self.additional_information_link
+                existing.save(
+                    update_fields=['description', 'additional_information_file', 'additional_information_link'])
+                return
+        super().save(*args, **kwargs)
+
     def __str__(self):
-        return f"{self.year} - {self.description[:50]}"
+        return self.description[:50]
+
 
 class Criteria_3_4_3(models.Model):
-    year = models.IntegerField(
-        choices=[(2021, '2021-2022'),
-        (2022, '2022-2023'),
-        (2023, '2023-2024'),
-        (2024, '2024-2025'),
-        (2025, '2025-2026'),]
-    )
-    activity_name = models.CharField(max_length=255)
-    organizing_unit = models.CharField(max_length=255) 
-    scheme_name = models.CharField(max_length=255, blank=True, null=True)
-    activity_year = models.PositiveIntegerField(
-        choices=[(2021, '2021-2022'),
-        (2022, '2022-2023'),
-        (2023, '2023-2024'),
-        (2024, '2024-2025'),
-        (2025, '2025-2026'),]
-    )
+    name_of_activity = models.CharField(max_length=255)
+    organising_unit_or_agency_or_collaborating_agency = models.CharField(max_length=255)
+    name_of_scheme = models.CharField(max_length=255)
+    year_of_activity = models.IntegerField()
 
     def __str__(self):
-        return f"{self.activity_name} ({self.activity_year})"
+        return f"{self.name_of_activity} ({self.year_of_activity})"
+
 
 class Criteria_3_5_1(models.Model):
-    year = models.PositiveIntegerField(
-        choices=[(2021, '2021-2022'),
-        (2022, '2022-2023'),
-        (2023, '2023-2024'),
-        (2024, '2024-2025'),
-        (2025, '2025-2026'),]
-    )
+    YEAR_CHOICES = [
+        (2021, '2020-2021'),
+        (2022, '2021-2022'),
+        (2023, '2022-2023'),
+        (2024, '2023-2024'),
+        (2025, '2024-2025'),
+    ]
+    year = models.IntegerField(choices=YEAR_CHOICES)
     mou_name = models.CharField(max_length=255)
     institution_name = models.CharField(max_length=255)
     signing_year = models.PositiveIntegerField()

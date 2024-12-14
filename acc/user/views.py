@@ -4,12 +4,70 @@ from .models import CustomUser, UserCriteriaLink
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from collections import defaultdict
+from django.contrib.auth.decorators import login_required
 
 CRITERIA_LIST = {
-        '3_1_1': "Criteria 3.1.1",
-        '3_2_2': "Criteria 3.2.2",
-        '3_3_1': "Criteria 3.3.1",
-        '3_5_1': "Criteria 3.5.1",
+    '1_1_1': "Criteria 1.1.1",
+    '1_2_2': "Criteria 1.2.2",
+    '1_3_1': "Criteria 1.3.1",
+    '1_3_2': "Criteria 1.3.2",
+
+    # criteria 2
+    '2_3_1': "Criteria 2.3.1",
+    '2_4_2': "Criteria 2.4.2",
+    '2_5_1': "Criteria 2.5.1",
+    '2_6_1': "Criteria 2.6.1",
+    '2_6_2': "Criteria 2.6.2",
+    '2_6_3': "Criteria 2.6.3",
+    '2_7_1': "Criteria 2.7.1",
+
+    # criteria 3
+    '3_1_1': "Criteria 3.1.1",
+    '3_2_1': "Criteria 3.2.1",
+    '3_2_2': "Criteria 3.2.2",
+    '3_3_1': "Criteria 3.3.1",
+    '3_3_2': "Criteria 3.3.2",
+    '3_4_1': "Criteria 3.4.1",
+    '3_4_2': "Criteria 3.4.2",
+    '3_4_3': "Criteria 3.4.3",
+    '3_5_1': "Criteria 3.5.1",
+
+    # criteria 4
+    '4_1_1': "Criteria 4.1.1",
+    '4_1_2': "Criteria 4.1.2",
+    '4_2_1': "Criteria 4.2.1",
+    '4_3_1': "Criteria 4.3.1",
+    '4_4_1': "Criteria 4.4.1",
+
+    # criteria 5
+    '5_1_1': "Criteria 5.1.1",
+    '5_1_2': "Criteria 5.1.2",
+    '5_1_3': "Criteria 5.1.3",
+    '5_1_4': "Criteria 5.1.4",
+    '5_2_1': "Criteria 5.2.1",
+    '5_2_2': "Criteria 5.2.2",
+    '5_3_1': "Criteria 5.3.1",
+    '5_3_2': "Criteria 5.3.2",
+    '5_4_1': "Criteria 5.4.1",
+
+    # criteria 6
+    '6_1_1': "Criteria 6.1.1",
+    '6_2_1': "Criteria 6.2.1",
+    '6_2_2': "Criteria 6.2.2",
+    '6_3_1': "Criteria 6.3.1",
+    '6_3_2': "Criteria 6.3.2",
+    '6_3_3': "Criteria 6.3.3",
+    '6_4_1': "Criteria 6.4.1",
+    '6_5_1': "Criteria 6.5.1",
+    '6_5_2': "Criteria 6.5.2",
+
+    # criteria 7
+    '7_1_1': "Criteria 7.1.1",
+    '7_1_2': "Criteria 7.1.2",
+    '7_1_3': "Criteria 7.1.3",
+    '7_1_4': "Criteria 7.1.4",
+    '7_2_1': "Criteria 7.2.1",
+    '7_3_1': "Criteria 7.3.1",
 }
 
 
@@ -36,6 +94,7 @@ def user_login(request):
     return render(request, 'login.html')
 
 
+@login_required
 def user_logout(request):
     logout(request)
     messages.success(request, 'Logout successfully!!')
@@ -80,6 +139,7 @@ def register(request):
     return render(request, 'register.html', {'form': form})
 
 
+@login_required
 def profile(request, username):
     user = CustomUser.objects.get(username=username)
     tasks = UserCriteriaLink.objects.filter(user=user)
@@ -90,8 +150,9 @@ def profile(request, username):
     return render(request, 'profile.html', context=context)
 
 
+@login_required
 def assign_user(request):
-    user_criteria_links = UserCriteriaLink.objects.select_related('user').all()
+    user_criteria_links = UserCriteriaLink.objects.select_related('user').exclude(user__user_type='HOD').all()
     user_criteria_dict = defaultdict(lambda: {'assigned': [], 'unassigned': list(CRITERIA_LIST.values())})
     for link in user_criteria_links:
         user = link.user
@@ -113,6 +174,7 @@ def assign_user(request):
 REVERSE_CRITERIA_LIST = {v: k for k, v in CRITERIA_LIST.items()}
 
 
+@login_required
 def assign_user_to_criteria(request):
     username = request.POST.get('username')
     selected_criteria = request.POST.getlist('criteria')
@@ -151,6 +213,7 @@ def assign_user_to_criteria(request):
         return redirect('assign_user')
 
 
+@login_required
 def delete_user_to_criteria(request, username, criteria):
     print(criteria)
     criteria_key = REVERSE_CRITERIA_LIST.get(criteria)

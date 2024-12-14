@@ -19,6 +19,39 @@ class CriteriaForm_3_1_1(forms.ModelForm):
         }
 
 
+class CriteriaForm_3_2_1(forms.ModelForm):
+    class Meta:
+        model = Criteria_3_2_1
+        fields = ['description', 'additional_information_file', 'additional_information_link']
+
+    description = forms.CharField(
+        widget=forms.Textarea(attrs={
+            'class': 'form-control mb-3',
+            'rows': '4',
+            'id': 'description',
+            'required': True,
+            'placeholder': (
+                'Describe in a maximum of 500 words.'
+            )
+        })
+    )
+    additional_information_file = forms.FileField(
+        required=False,
+        widget=forms.ClearableFileInput(attrs={
+            'class': 'form-control mb-3',
+            'id': 'fileUpload',
+            'accept': '.pdf, .docx, .xlsx'
+        })
+    )
+    additional_information_link = forms.URLField(
+        required=False,
+        widget=forms.URLInput(attrs={
+            'class': 'form-control mb-3',
+            'id': 'relatedLink',
+            'placeholder': 'https://example.com'
+        })
+    )
+
 
 class CriteriaForm_3_2_2(forms.ModelForm):
     class Meta:
@@ -53,6 +86,115 @@ class CriteriaForm_3_3_1(forms.ModelForm):
             'journal_website_link': forms.URLInput(attrs={'class': 'form-control', 'placeholder': 'Enter Journal Website Link'}),
             'article_link': forms.URLInput(attrs={'class': 'form-control', 'placeholder': 'Enter Article Link'}),
             'is_ugc_care_listed': forms.CheckboxInput(attrs={'class': 'form-check-input'}),
+        }
+
+
+class CriteriaForm_3_3_2(forms.ModelForm):
+    class Meta:
+        model = Criteria_3_3_2
+        fields = [
+            'name_of_teacher',
+            'title_of_book_or_chapters_published',
+            'title_of_paper',
+            'title_of_proceedings_of_conference',
+            'name_of_conference',
+            'national_or_international',
+            'calendar_year_of_publication',
+            'isbn_number_of_proceeding',
+            'affiliating_institute_at_time_of_publication',
+            'name_of_publisher'
+        ]
+        widgets = {
+            'name_of_teacher': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Enter Name of Teacher'}),
+            'title_of_book_or_chapters_published': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Enter Title of Book or Chapters Published'}),
+            'title_of_paper': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Enter Title of Paper'}),
+            'title_of_proceedings_of_conference': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Enter Title of Proceedings'}),
+            'name_of_conference': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Enter Name of Conference'}),
+            'national_or_international': forms.Select(attrs={'class': 'form-select'}),
+            'calendar_year_of_publication': forms.NumberInput(attrs={'class': 'form-control', 'placeholder': 'Enter Year of Publication'}),
+            'isbn_number_of_proceeding': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Enter ISBN Number'}),
+            'affiliating_institute_at_time_of_publication': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Enter Affiliating Institute'}),
+            'name_of_publisher': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Enter Name of Publisher'}),
+        }
+
+
+class CriteriaForm_3_4_1(forms.ModelForm):
+    class Meta:
+        model = Criteria_3_4_1
+        fields = ['description', 'additional_information_file', 'additional_information_link']
+
+    description = forms.CharField(
+        widget=forms.Textarea(attrs={
+            'class': 'form-control mb-3',
+            'rows': '4',
+            'id': 'description',
+            'required': True,
+            'placeholder': (
+                'Describe in a maximum of 500 words.'
+            )
+        })
+    )
+    additional_information_file = forms.FileField(
+        required=False,
+        widget=forms.ClearableFileInput(attrs={
+            'class': 'form-control mb-3',
+            'id': 'fileUpload',
+            'accept': '.pdf, .docx, .xlsx'
+        })
+    )
+    additional_information_link = forms.URLField(
+        required=False,
+        widget=forms.URLInput(attrs={
+            'class': 'form-control mb-3',
+            'id': 'relatedLink',
+            'placeholder': 'https://example.com'
+        })
+    )
+
+
+class CriteriaForm_3_4_2(forms.ModelForm):
+    class Meta:
+        model = Criteria_3_4_2
+        fields = ['description', 'additional_information_file', 'additional_information_link']
+
+    description = forms.CharField(
+        widget=forms.Textarea(attrs={
+            'class': 'form-control mb-3',
+            'rows': '4',
+            'id': 'description',
+            'required': True,
+            'placeholder': (
+                'Describe in a maximum of 500 words.'
+            )
+        })
+    )
+    additional_information_file = forms.FileField(
+        required=False,
+        widget=forms.ClearableFileInput(attrs={
+            'class': 'form-control mb-3',
+            'id': 'fileUpload',
+            'accept': '.pdf, .docx, .xlsx'
+        })
+    )
+    additional_information_link = forms.URLField(
+        required=False,
+        widget=forms.URLInput(attrs={
+            'class': 'form-control mb-3',
+            'id': 'relatedLink',
+            'placeholder': 'https://example.com'
+        })
+    )
+
+
+class CriteriaForm_3_4_3(forms.ModelForm):
+    class Meta:
+        model = Criteria_3_4_3
+        fields = ['name_of_activity', 'organising_unit_or_agency_or_collaborating_agency', 'name_of_scheme', 'year_of_activity']
+        widgets = {
+            'name_of_activity': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Enter Name of Activity'}),
+            'organising_unit_or_agency_or_collaborating_agency': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Enter Organising Unit/Agency'}),
+            'name_of_scheme': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Enter Name of Scheme'}),
+            'year_of_activity': forms.NumberInput(attrs={'class': 'form-control', 'placeholder': 'Enter Year of Activity'}),
         }
 
 

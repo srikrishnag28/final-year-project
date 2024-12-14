@@ -1,5 +1,40 @@
 from django import forms
-from .models import Criteria_1_2_2
+from .models import *
+
+
+class CriteriaForm_1_1_1(forms.ModelForm):
+    class Meta:
+        model = Criteria_1_1_1
+        fields = ['description', 'additional_information_file', 'additional_information_link']
+
+    description = forms.CharField(
+        widget=forms.Textarea(attrs={
+            'class': 'form-control mb-3',
+            'rows': '4',
+            'id': 'description',
+            'required': True,
+            'placeholder': (
+                'Describe in a maximum of 500 words.'
+            )
+        })
+    )
+    additional_information_file = forms.FileField(
+        required=False,
+        widget=forms.ClearableFileInput(attrs={
+            'class': 'form-control mb-3',
+            'id': 'fileUpload',
+            'accept': '.pdf, .docx, .xlsx'
+        })
+    )
+    additional_information_link = forms.URLField(
+        required=False,
+        widget=forms.URLInput(attrs={
+            'class': 'form-control mb-3',
+            'id': 'relatedLink',
+            'placeholder': 'https://example.com'
+        })
+    )
+
 
 class CriteriaForm_1_2_2(forms.ModelForm):
     class Meta:
@@ -24,3 +59,49 @@ class CriteriaForm_1_2_2(forms.ModelForm):
         self.fields['period_to'].initial = None
 
 
+class CriteriaForm_1_3_1(forms.ModelForm):
+    class Meta:
+        model = Criteria_1_3_1
+        fields = ['description', 'additional_information_file', 'additional_information_link']
+
+    description = forms.CharField(
+        widget=forms.Textarea(attrs={
+            'class': 'form-control mb-3',
+            'rows': '4',
+            'id': 'description',
+            'required': True,
+            'placeholder': (
+                'Describe in a maximum of 500 words.'
+            )
+        })
+    )
+    additional_information_file = forms.FileField(
+        required=False,
+        widget=forms.ClearableFileInput(attrs={
+            'class': 'form-control mb-3',
+            'id': 'fileUpload',
+            'accept': '.pdf, .docx, .xlsx'
+        })
+    )
+    additional_information_link = forms.URLField(
+        required=False,
+        widget=forms.URLInput(attrs={
+            'class': 'form-control mb-3',
+            'id': 'relatedLink',
+            'placeholder': 'https://example.com'
+        })
+    )
+
+
+class CriteriaForm_1_3_2(forms.ModelForm):
+    class Meta:
+        model = Criteria_1_3_2
+        fields = [
+            'programme_name', 'programme_code', 'student_list', 'document_link'
+        ]
+        widgets = {
+            'programme_name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Enter Programme Name'}),
+            'programme_code': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Enter Programme Code'}),
+            'student_list': forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Enter List of Students'}),
+            'document_link': forms.URLInput(attrs={'class': 'form-control', 'placeholder': 'Enter Document Link'}),
+        }

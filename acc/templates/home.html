@@ -1,5 +1,42 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h2>Home page</h2>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NAAC Accreditation Management System</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+
+
+    {% include 'messages.html' %}
+    <!-- Header Section -->
+    <header class="jumbotron text-center bg-secondary text-white">
+        <h1 class="display-4">NAAC Accreditation Management System</h1>
+        <p class="lead">Streamlining Accreditation Processes for Educational Institutions</p>
+    </header>
+
+    <!-- Quick Links Section -->
+    <div class="container text-center my-5">
+        <h2 class="mb-4">Quick Links</h2>
+        <div class="row justify-content-center">
+            <div class="col-md-3">
+                <a href="{% url 'viewcriteria' %}" class="btn btn-outline-secondary btn-block">View Criteria</a>
+            </div>
+            <div class="col-md-3">
+                <a href="{% url 'assign_user' %}" class="btn btn-outline-secondary btn-block">Assign Users</a>
+            </div>
+            {% if request.user.user_type == "HOD" %}
+            <div class="col-md-3">
+                <a href="{% url 'register' %}" class="btn btn-outline-secondary btn-block">Add New User</a>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+    </body>
+</html>
+
 {% endblock %}

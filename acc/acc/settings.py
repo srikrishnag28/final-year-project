@@ -43,6 +43,8 @@ INSTALLED_APPS = [
     'criteria_2',
     'criteria_3',
     'criteria_4',
+    'criteria_5',
+    'criteria_6',
     'criteria_7',
 ]
 
@@ -157,3 +159,5 @@ MESSAGE_TAGS = {
 TIME_ZONE = 'Asia/Kolkata'
 
 USE_TZ = True
+
+LOGIN_URL = '/user/login/'
